@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<title>강수 매치 가이드 — 매니저용</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/variable/pretendardvariable.css');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo',sans-serif;background:#F0F2F5;color:#191F28;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.phone{width:390px;height:100vh;max-height:820px;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.14);display:flex;flex-direction:column;overflow:hidden;}
+@media(max-width:440px){.phone{width:100%;height:100vh;border-radius:0;max-height:none;}}
+.hdr{padding:10px 16px 8px;flex-shrink:0;background:#fff;display:flex;align-items:center;gap:8px;min-height:56px;}
+.hdr-center{flex:1;text-align:center;}
+.step-dots{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:4px;}
+.dot{height:4px;border-radius:999px;background:#DDE0E8;transition:width .2s,background .2s;}
+.dot.on{background:#1570FF;}
+.step-label{font-size:11px;font-weight:600;color:#8B95A1;letter-spacing:0;}
+.hdr-title{font-size:15px;font-weight:700;color:#191F28;}
+.scr{flex:1;overflow-y:auto;padding:0 20px 20px;display:flex;flex-direction:column;scrollbar-width:none;}
+.scr::-webkit-scrollbar{display:none;}
+.screen{flex:1;display:flex;flex-direction:column;display:none;}
+.screen.active{display:flex;}
+.footer{flex-shrink:0;padding:12px 20px 22px;background:#fff;}
+.btn{height:56px;padding:0 16px;border-radius:14px;font-size:17px;font-weight:700;letter-spacing:-.02em;cursor:pointer;border:none;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .12s;font-family:inherit;}
+.btn-primary{background:#1570FF;color:#fff;}
+.btn-primary:hover{background:#0F62E8;}
+.btn-tertiary{background:#E8F1FF;color:#1570FF;}
+.btn-tertiary:hover{background:#D4E5FF;}
+.icon-btn{width:40px;height:40px;border-radius:999px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* Typography */
+.kicker{font-size:11px;font-weight:800;color:#1570FF;letter-spacing:.1em;margin-bottom:8px;}
+.big-kicker{font-size:12px;font-weight:700;color:#1570FF;letter-spacing:.04em;margin-bottom:8px;}
+.page-title{font-size:26px;font-weight:800;line-height:1.25;letter-spacing:-.03em;color:#191F28;}
+.step-title{font-size:24px;font-weight:800;line-height:1.25;letter-spacing:-.03em;color:#191F28;}
+.page-desc{margin-top:10px;font-size:14px;line-height:1.6;color:#4E5968;}
+.step-desc{margin-top:8px;font-size:13.5px;line-height:1.6;color:#4E5968;}
+.sec-title{font-size:14px;font-weight:800;color:#191F28;letter-spacing:-.02em;}
+.spacer{flex:1;min-height:14px;}
+.g8{height:8px;} .g16{height:16px;} .g20{height:20px;}
+
+/* Step entry (Intro) */
+.step-entry{display:flex;align-items:center;gap:14px;padding:18px 16px;border-radius:16px;background:#F7F8FA;border:none;width:100%;text-align:left;cursor:pointer;font-family:inherit;transition:background .12s;}
+.step-entry:hover{background:#F0F2F4;}
+.step-num{width:36px;height:36px;border-radius:999px;background:#1570FF;color:#fff;font-size:16px;font-weight:900;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.step-body{flex:1;min-width:0;}
+.step-kicker{font-size:10.5px;font-weight:500;color:#8B95A1;margin-bottom:3px;}
+.step-name{font-size:16px;font-weight:800;color:#191F28;letter-spacing:-.02em;}
+.step-sub{font-size:12.5px;color:#4E5968;margin-top:3px;line-height:1.5;}
+
+/* Sequential checklist (Step 1) */
+.seq-list{display:flex;flex-direction:column;}
+.seq-item{display:flex;gap:14px;}
+.seq-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.seq-badge{width:32px;height:32px;border-radius:999px;border:1.5px solid #E5E8EB;background:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#8B95A1;cursor:pointer;transition:all .15s;flex-shrink:0;}
+.seq-badge.done{background:#1570FF;border-color:#1570FF;color:#fff;}
+.seq-line{width:2px;background:#E5E8EB;flex:1;margin:4px 0;min-height:16px;}
+.seq-item:last-child .seq-line{display:none;}
+.seq-right{flex:1;padding-bottom:20px;cursor:pointer;}
+.seq-item:last-child .seq-right{padding-bottom:0;}
+.seq-title{font-size:15px;font-weight:700;color:#191F28;letter-spacing:-.02em;line-height:1.4;padding-top:4px;}
+.seq-desc{font-size:13px;color:#4E5968;margin-top:5px;line-height:1.55;}
+
+/* Refund section */
+.refund-block{padding:14px 16px;border-radius:14px;background:#FFECEC;margin-bottom:10px;}
+.refund-no-tag{display:inline-flex;align-items:center;gap:6px;margin-bottom:6px;}
+.refund-label{font-size:11.5px;font-weight:800;color:#F04438;letter-spacing:.04em;}
+.refund-title{font-size:13.5px;font-weight:500;color:#191F28;line-height:1.5;letter-spacing:-.02em;}
+.rule-row{display:flex;gap:10px;align-items:flex-start;padding:12px 0;}
+.rule-row+.rule-row{border-top:1px solid #E5E8EB;}
+.rule-icon{width:20px;height:20px;border-radius:999px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:#0BA260;}
+.rule-body-title{font-size:14px;font-weight:600;color:#191F28;letter-spacing:-.02em;line-height:1.35;}
+.rule-body-desc{font-size:12.5px;color:#4E5968;margin-top:3px;line-height:1.5;}
+.nav-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;background:#E8F1FF;border:none;cursor:pointer;font-family:inherit;text-align:left;width:100%;transition:background .12s;margin-top:10px;}
+.nav-row:hover{background:#D4E5FF;}
+.nav-icon-wrap{width:34px;height:34px;border-radius:8px;background:#fff;color:#1570FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-label{font-size:14px;font-weight:700;color:#191F28;letter-spacing:-.02em;}
+.nav-sub{font-size:12px;color:#4E5968;margin-top:2px;}
+
+/* Verdict rows */
+.verdict-rows{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.verdict-row{padding:14px 16px;border-radius:12px;display:flex;align-items:flex-start;gap:12px;}
+.verdict-row.success{background:#E6F7EE;}
+.verdict-row.warn{background:#FEF3C7;}
+.verdict-row.error{background:#FFECEC;}
+.vr-tag{padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.8);font-size:11.5px;font-weight:800;flex-shrink:0;margin-top:1px;}
+.vr-tag.success{color:#0BA260;}
+.vr-tag.warn{color:#B45309;}
+.vr-tag.error{color:#F04438;}
+.vr-title{font-size:14.5px;font-weight:700;color:#191F28;letter-spacing:-.02em;}
+.vr-desc{font-size:12.5px;color:#4E5968;margin-top:3px;line-height:1.5;}
+
+/* Player widget */
+.player-widget{padding:16px;}
+.widget-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.widget-icon{width:22px;height:22px;border-radius:7px;background:#1570FF;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.widget-title{font-size:14px;font-weight:800;color:#191F28;letter-spacing:-.02em;margin-left:8px;}
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:16px;}
+.type-btn{padding:11px 4px;border-radius:12px;font-size:13px;font-weight:600;letter-spacing:-.02em;cursor:pointer;border:none;font-family:inherit;background:#F2F4F6;color:#191F28;transition:background .12s,color .12s;}
+.type-btn.active{background:#1570FF;color:#fff;}
+.counter-box{background:#F7F8FA;border-radius:12px;padding:16px;}
+.counter-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0;}
+.counter-num{font-size:48px;font-weight:900;color:#191F28;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;}
+.counter-unit{font-size:16px;font-weight:700;color:#4E5968;margin-left:2px;}
+.stepper{width:44px;height:44px;border-radius:999px;background:#fff;color:#191F28;border:none;font-size:22px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:background .12s;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.stepper:hover{background:#F2F4F6;}
+.counter-hint{display:flex;justify-content:center;align-items:baseline;gap:6px;font-size:12px;color:#4E5968;}
+.counter-min-val{font-weight:800;color:#191F28;font-variant-numeric:tabular-nums;}
+.verdict-box{margin-top:12px;padding:14px;border-radius:12px;display:flex;gap:10px;align-items:flex-start;}
+.verdict-box.success{background:#E6F7EE;}
+.verdict-box.warn{background:#FEF3C7;}
+.verdict-box.error{background:#FFECEC;}
+.verdict-icon{width:22px;height:22px;border-radius:999px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;}
+.verdict-icon.success{background:#0BA260;}
+.verdict-icon.warn{background:#B45309;}
+.verdict-icon.error{background:#F04438;}
+.verdict-lbl{font-size:13px;font-weight:800;letter-spacing:-.02em;}
+.verdict-lbl.success{color:#0BA260;}
+.verdict-lbl.warn{color:#B45309;}
+.verdict-lbl.error{color:#F04438;}
+.verdict-desc-text{font-size:13px;color:#191F28;margin-top:3px;line-height:1.5;}
+
+/* Min table (inside toggle) */
+.min-table{border-radius:12px;background:#F7F8FA;overflow:hidden;}
+.min-row{padding:13px 14px;display:flex;align-items:center;gap:10px;}
+.min-row+.min-row{border-top:1px solid #E5E8EB;}
+.min-cat{width:36px;height:20px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;}
+.min-cat.futsal{color:#1570FF;}
+.min-cat.soccer{color:#3F6B53;}
+.min-label{font-size:14px;font-weight:700;color:#191F28;flex:1;}
+.min-note{font-size:11.5px;color:#4E5968;margin-top:2px;}
+.min-num{font-size:18px;font-weight:900;color:#191F28;font-variant-numeric:tabular-nums;}
+.min-unit{font-size:11px;color:#4E5968;margin-left:2px;}
+
+/* Collapsible */
+.collapse-wrap{border-radius:14px;overflow:hidden;background:#F7F8FA;}
+.collapse-trigger{width:100%;display:flex;align-items:center;gap:10px;padding:16px;background:transparent;border:none;cursor:pointer;font-family:inherit;text-align:left;}
+.collapse-num{width:26px;height:26px;border-radius:999px;background:#1570FF;color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.collapse-num.ref{background:#E5E8EB;color:#8B95A1;font-size:10px;font-weight:700;letter-spacing:-.01em;}
+.collapse-label-wrap{flex:1;}
+.collapse-title{font-size:15px;font-weight:800;color:#191F28;letter-spacing:-.02em;}
+.collapse-badge-txt{font-size:11.5px;color:#8B95A1;margin-top:2px;}
+.collapse-arrow{transition:transform .22s;flex-shrink:0;color:#8B95A1;}
+.collapse-arrow.open{transform:rotate(180deg);}
+.collapse-body{padding:0 16px 18px;display:none;}
+.collapse-body.open{display:block;}
+.collapse-divider{height:1px;background:#F2F4F6;margin-bottom:16px;}
+
+/* Immediate actions (no box) */
+.plain-action{display:flex;flex-direction:column;gap:14px;}
+.plain-action-item{display:flex;gap:12px;align-items:flex-start;}
+.plain-num{width:24px;height:24px;border-radius:999px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;margin-top:1px;}
+.plain-num.err{background:#F04438;}
+.plain-num.wrn{background:#B45309;}
+.plain-action-title{font-size:14px;font-weight:600;color:#191F28;letter-spacing:-.02em;line-height:1.35;}
+.plain-action-desc{font-size:12.5px;color:#4E5968;margin-top:4px;line-height:1.5;}
+.plain-bullet{width:6px;height:6px;border-radius:999px;background:#191F28;flex-shrink:0;margin-top:8px;}
+
+/* 강수 매치 체크 기준 (improved) */
+.check-warn{margin-bottom:16px;}
+.check-warn-title{font-size:13.5px;font-weight:700;color:#F04438;margin-bottom:3px;}
+.check-warn-desc{font-size:13px;font-weight:400;color:#4E5968;line-height:1.6;}
+.check-group-label{font-size:11px;font-weight:600;color:#8B95A1;letter-spacing:.04em;margin-bottom:10px;}
+.check-bullets{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.check-bullet{display:flex;gap:10px;align-items:flex-start;}
+.check-dot{width:18px;height:18px;border-radius:999px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;}
+.check-dot.ok{background:#0BA260;}
+.check-dot.no{background:#D1D5DB;}
+.check-bullet-text{flex:1;font-size:13.5px;color:#4E5968;line-height:1.6;}
+.check-sep{height:1px;background:#F2F4F6;margin:0 -16px 16px;}
+.risk-items{display:flex;flex-direction:column;gap:14px;}
+.risk-item{display:flex;gap:10px;align-items:flex-start;}
+.risk-badge{width:20px;height:20px;border-radius:999px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
+.risk-badge.normal{background:#F2F4F6;color:#8B95A1;}
+.risk-badge.crit{background:#F04438;color:#fff;}
+.risk-item-title{font-size:13.5px;font-weight:600;letter-spacing:-.02em;line-height:1.35;}
+.risk-item.normal .risk-item-title{color:#191F28;}
+.risk-item.crit .risk-item-title{color:#F04438;}
+.risk-item-desc{font-size:12px;color:#4E5968;margin-top:3px;line-height:1.5;}
+
+/* Settlement */
+.settle-group{margin-bottom:12px;}
+.settle-group-label{font-size:11px;font-weight:700;color:#8B95A1;letter-spacing:.04em;margin-bottom:6px;}
+.settle-wrap{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #F2F4F6;}
+.settle-row{display:flex;align-items:center;gap:12px;padding:12px 14px;}
+.settle-row+.settle-row{border-top:1px solid #F2F4F6;}
+.settle-sign{width:22px;height:22px;border-radius:999px;background:#F2F4F6;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;line-height:1;}
+.settle-sign.plus{color:#0BA260;}
+.settle-sign.minus{color:#F04438;}
+.settle-sign.info{color:#1570FF;}
+.settle-sign.eq{color:#8B95A1;}
+.settle-label{flex:1;font-size:13.5px;font-weight:600;color:#191F28;letter-spacing:-.02em;}
+.settle-sub{font-size:11px;color:#4E5968;margin-top:2px;line-height:1.4;}
+.settle-amount{font-size:13.5px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.settle-amount.plus{color:#0BA260;}
+.settle-amount.minus{color:#F04438;}
+.settle-amount.neutral{color:#191F28;}
+
+/* Report radio */
+.report-radio-label{font-size:12px;font-weight:700;color:#4E5968;margin-bottom:10px;}
+.report-radio{padding:12px;border-radius:12px;cursor:pointer;margin-bottom:4px;transition:background .12s;display:flex;align-items:flex-start;gap:10px;}
+.report-radio.selected{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.radio-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:2px;background:#fff;box-shadow:inset 0 0 0 1.5px #E5E8EB;display:flex;align-items:center;justify-content:center;transition:all .12s;}
+.report-radio.selected .radio-dot{background:#1570FF;box-shadow:none;}
+.radio-inner{width:7px;height:7px;border-radius:50%;background:#fff;}
+.radio-title{font-size:14px;font-weight:700;color:#191F28;letter-spacing:-.02em;line-height:1.4;}
+.radio-desc{font-size:12px;color:#4E5968;margin-top:2px;}
+.timeslots{margin-top:10px;}
+.timeslot-label{font-size:11.5px;color:#8B95A1;margin-bottom:6px;}
+.timeslot-row{display:flex;gap:6px;flex-wrap:wrap;}
+.slot-btn{padding:7px 12px;border-radius:999px;background:#F2F4F6;color:#191F28;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:background .12s,color .12s;}
+.slot-btn.on{background:#1570FF;color:#fff;}
+.report-checks{display:flex;flex-direction:column;gap:6px;}
+.rcheck-item{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#fff;border:none;cursor:pointer;text-align:left;font-family:inherit;transition:background .12s;width:100%;}
+.rcheck-item.on{background:#E8F1FF;}
+.rcheck-box{width:20px;height:20px;border-radius:6px;flex-shrink:0;margin-top:1px;background:#F2F4F6;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.rcheck-item.on .rcheck-box{background:#1570FF;}
+.rcheck-title{font-size:13.5px;font-weight:600;color:#191F28;letter-spacing:-.02em;line-height:1.4;}
+.rcheck-item.on .rcheck-title{text-decoration:line-through;opacity:.5;}
+.rcheck-detail{font-size:12px;color:#4E5968;margin-top:3px;line-height:1.5;}
+
+.note-text{font-size:12px;color:#8B95A1;line-height:1.55;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="hdr" id="hdr">
+    <button class="icon-btn" id="back-btn" onclick="goBack()" style="display:none">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#191F28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="width:40px;flex-shrink:0" id="hdr-spacer"></div>
+    <div class="hdr-center" id="hdr-center"><div class="hdr-title">강수 매치 가이드</div></div>
+    <div style="width:40px;flex-shrink:0"></div>
+  </div>
+
+  <div class="scr" id="scr">
+
+    <!-- ─── INTRO ─────────────────────── -->
+    <div class="screen active" id="s-intro">
+      <div class="big-kicker">매니저 가이드</div>
+      <div class="page-title">강수 매치<br>진행 가이드</div>
+      <div class="page-desc">비·눈이 오는 매치를 안전하게 운영하기 위한 매니저용 가이드예요.<br>매치 진행 전·중·후 순서대로 확인해 주세요.</div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+        <button class="step-entry" onclick="goTo('s-step1')">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-kicker">진행 전</div>
+            <div class="step-name">도착·출석 확인</div>
+            <div class="step-sub">출석 확인 · 안전 안내 · 환불 규정</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="step-entry" onclick="goTo('s-step2')">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-kicker">진행 중</div>
+            <div class="step-name">진행 여부 결정</div>
+            <div class="step-sub">기준 확인 · 인원 판정</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="step-entry" onclick="goTo('s-step3')">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-kicker">진행 후</div>
+            <div class="step-name">현장 정리·정산</div>
+            <div class="step-sub">즉시 처리 · 리포트 · 체크 기준 · 정산</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- ─── STEP 1 ─────────────────────── -->
+    <div class="screen" id="s-step1">
+      <div class="kicker">진행 전</div>
+      <div class="step-title">도착·출석을<br>확인해 주세요</div>
+      <div class="step-desc">순서대로 확인하고 탭해서 완료 처리해 주세요.</div>
+      <div class="g20"></div>
+      <div class="seq-list">
+        <div class="seq-item">
+          <div class="seq-left"><div class="seq-badge" id="sb1" onclick="toggleSeq(1)">1</div><div class="seq-line"></div></div>
+          <div class="seq-right" onclick="toggleSeq(1)"><div class="seq-title">도착한 플래버 명단 확인</div><div class="seq-desc">현장에 도착한 플래버를 한 명씩 확인해 주세요.</div></div>
+        </div>
+        <div class="seq-item">
+          <div class="seq-left"><div class="seq-badge" id="sb2" onclick="toggleSeq(2)">2</div><div class="seq-line"></div></div>
+          <div class="seq-right" onclick="toggleSeq(2)"><div class="seq-title">안전 수칙 안내</div><div class="seq-desc">미끄러짐·시야 확보·무리한 플레이 자제를 안내해 주세요.</div></div>
+        </div>
+        <div class="seq-item">
+          <div class="seq-left"><div class="seq-badge" id="sb3" onclick="toggleSeq(3)">3</div><div class="seq-line"></div></div>
+          <div class="seq-right" onclick="toggleSeq(3)"><div class="seq-title">늦는 플래버에게 연락</div><div class="seq-desc">도착하지 않은 플래버에게 연락해 도착 시점을 확인해 주세요.</div></div>
+        </div>
+        <div class="seq-item">
+          <div class="seq-left"><div class="seq-badge" id="sb4" onclick="toggleSeq(4)">4</div></div>
+          <div class="seq-right" onclick="toggleSeq(4)"><div class="seq-title">귀가자·무단 불참자 리포트 작성</div><div class="seq-desc">닉네임·귀가 시점, 무단 불참자를 매치 리포트에 남겨주세요.</div></div>
+        </div>
+      </div>
+      <div class="g20"></div>
+      <div class="sec-title" style="margin-bottom:12px">플래버 환불 규정</div>
+      <div class="refund-block">
+        <div class="refund-no-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#F04438" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#F04438" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="refund-label">예외 없이 환불 불가</span>
+        </div>
+        <div class="refund-title">현장에 도착하지 않은 플래버는<br>어떤 경우에도 환불되지 않아요.</div>
+      </div>
+      <div style="background:#F7F8FA;border-radius:14px;padding:4px 16px;">
+        <div class="rule-row">
+          <div class="rule-icon"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div><div class="rule-body-title">매치가 현장에서 취소·중단된 경우</div><div class="rule-body-desc">진행하지 못한 시간만큼 환불돼요.</div></div>
+        </div>
+        <div class="rule-row">
+          <div class="rule-icon"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div><div class="rule-body-title">미니게임으로 진행된 시간</div><div class="rule-body-desc">환불에 포함돼요.</div></div>
+        </div>
+      </div>
+      <button class="nav-row" onclick="goTo('s-refund')">
+        <div class="nav-icon-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="flex:1"><div class="nav-label">알림톡 발송 유형별 환불 기준</div><div class="nav-sub">일반·변동 알림톡에 따라 환불 기준이 달라요</div></div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#1570FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- ─── REFUND SUB ───────────────────── -->
+    <div class="screen" id="s-refund">
+      <div class="kicker">환불 규정 상세</div>
+      <div class="step-title">알림톡 유형별<br>환불 기준</div>
+      <div class="step-desc">알림톡 발송 시점에 따라 개별 귀가 환불 기준이 달라져요.</div>
+      <div class="g20"></div>
+      <div style="padding:16px;border-radius:16px;background:#F7F8FA;margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#E8F1FF;color:#1570FF;">일반 알림톡</span><span style="font-size:11.5px;color:#4E5968;font-weight:600;">매치 시작 4시간 이내 ~ 2시간 전</span></div>
+        <div style="background:#fff;border-radius:10px;padding:12px 12px 8px;margin-bottom:12px;"><svg width="100%" viewBox="0 0 290 56" style="display:block"><line x1="14" y1="36" x2="276" y2="36" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/><rect x="14" y="28" width="131" height="16" rx="8" fill="#E8F1FF"/><line x1="22" y1="36" x2="137" y2="36" stroke="#1570FF" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="36" r="3.5" fill="#fff" stroke="#1570FF" stroke-width="1.5"/><circle cx="145" cy="36" r="3.5" fill="#fff" stroke="#1570FF" stroke-width="1.5"/><circle cx="276" cy="36" r="3.5" fill="#1570FF" stroke="#1570FF" stroke-width="1.5"/><text x="14" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">4시간 전</text><text x="145" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">2시간 전</text><text x="276" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">매치 시작</text><text x="79" y="20" fill="#1570FF" font-size="10.5" font-weight="800" text-anchor="middle">발송 구간</text></svg></div>
+        <div style="font-size:12.5px;color:#4E5968;line-height:1.55;margin-bottom:12px">구장에 시간당 1mm 이상 강수 예보가 확인되면 발송돼요.</div>
+        <div style="padding:10px 12px;border-radius:8px;background:#FFECEC;display:flex;align-items:center;gap:8px;"><div style="width:18px;height:18px;border-radius:999px;background:#F04438;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="9" height="9" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div><div style="font-size:13px;font-weight:700;color:#F04438;">개별 귀가 시 환불 불가</div></div>
+      </div>
+      <div style="padding:16px;border-radius:16px;background:#F7F8FA;margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#FFECEC;color:#F04438;">변동 알림톡</span><span style="font-size:11.5px;color:#4E5968;font-weight:600;">매치 시작 2시간 이내</span></div>
+        <div style="background:#fff;border-radius:10px;padding:12px 12px 8px;margin-bottom:12px;"><svg width="100%" viewBox="0 0 290 56" style="display:block"><line x1="14" y1="36" x2="276" y2="36" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/><rect x="145" y="28" width="131" height="16" rx="8" fill="#FFECEC"/><line x1="153" y1="36" x2="268" y2="36" stroke="#F04438" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="36" r="3.5" fill="#fff" stroke="#F04438" stroke-width="1.5"/><circle cx="145" cy="36" r="3.5" fill="#fff" stroke="#F04438" stroke-width="1.5"/><circle cx="276" cy="36" r="3.5" fill="#F04438" stroke="#F04438" stroke-width="1.5"/><text x="14" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">4시간 전</text><text x="145" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">2시간 전</text><text x="276" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">매치 시작</text><text x="211" y="20" fill="#F04438" font-size="10.5" font-weight="800" text-anchor="middle">발송 구간</text></svg></div>
+        <div style="font-size:12.5px;color:#4E5968;line-height:1.55;margin-bottom:12px">구장에 시간당 1mm 이상 강수 예보가 확인되면 발송돼요.</div>
+        <div style="padding:10px 12px;border-radius:8px;background:#E6F7EE;display:flex;align-items:center;gap:8px;"><div style="width:18px;height:18px;border-radius:999px;background:#0BA260;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div style="font-size:13px;font-weight:700;color:#0BA260;">개별 귀가 시 미참여 시간만큼 환불</div></div>
+      </div>
+      <div class="note-text">※ <b style="color:#191F28">알림톡이 발송되지 않은 매치</b>는 강수로 개별 귀가 시 참여하지 않은 시간만큼 환불돼요.</div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- ─── STEP 2 ─────────────────────── -->
+    <div class="screen" id="s-step2">
+      <div class="kicker">진행 중</div>
+      <div class="step-title">진행 여부를<br>결정해요</div>
+      <div class="step-desc">매니저 포함 도착 인원을 기준으로 정상 진행·미니게임 전환·현장 취소를 판단해요.</div>
+      <div class="g20"></div>
+
+      <!-- 판정 기준 (바로 노출) -->
+      <div class="verdict-rows">
+        <div class="verdict-row success"><div class="vr-tag success">이상</div><div><div class="vr-title">정상 진행</div><div class="vr-desc">안전 안내 후 매치를 시작해 주세요.</div></div></div>
+        <div class="verdict-row warn"><div class="vr-tag warn">미만</div><div><div class="vr-title">미니게임 전환</div><div class="vr-desc">5v5·6v6에서만 가능해요. 매니저 포함 8~9명이면 미니게임으로 진행할 수 있어요.</div></div></div>
+        <div class="verdict-row error"><div class="vr-tag error">미만</div><div><div class="vr-title">현장 취소 또는 중단</div><div class="vr-desc">구장 사진을 즉시 상담 채널에 공유하고, 리포트를 작성해 주세요.</div></div></div>
+      </div>
+
+      <!-- 매치 유형별 최소 인원 토글 -->
+      <div class="collapse-wrap">
+        <button class="collapse-trigger" onclick="toggleCollapse('cm')">
+          <div class="collapse-label-wrap"><div class="collapse-title">매치 유형별 최소 인원</div></div>
+          <svg class="collapse-arrow" id="cm-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="collapse-body" id="cm-body">
+          <div class="collapse-divider"></div>
+          <div class="min-table">
+            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">4 vs 4</div></div><span class="min-num">6</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">5 vs 5</div><div class="min-note">8~9명이면 미니게임 전환 가능</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">6 vs 6</div><div class="min-note">8~9명이면 미니게임 전환 가능</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">7 vs 7</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">8 vs 8</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">11 vs 11</div><div class="min-note">구장에 따라 20명</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
+          </div>
+          <div class="note-text">미니게임 전환은 5v5·6v6에서만 가능해요. 매니저 포함 8~9명일 때 적용할 수 있어요.</div>
+        </div>
+      </div>
+
+      <div class="g8"></div>
+
+      <!-- 인원 판정 도우미 토글 -->
+      <div class="collapse-wrap">
+        <button class="collapse-trigger" onclick="toggleCollapse('cp')">
+          <div class="collapse-label-wrap"><div class="collapse-title">인원 판정 도우미</div></div>
+          <svg class="collapse-arrow" id="cp-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="collapse-body" id="cp-body">
+          <div class="collapse-divider"></div>
+          <div class="player-widget" style="padding:0;">
+            <div style="font-size:11.5px;font-weight:700;color:#4E5968;margin-bottom:8px;">매치 유형</div>
+            <div class="type-grid" id="type-grid">
+              <button class="type-btn" data-id="4v4" data-min="6" data-mini="0" onclick="selectType(this)">4 vs 4</button>
+              <button class="type-btn active" data-id="5v5" data-min="10" data-mini="1" onclick="selectType(this)">5 vs 5</button>
+              <button class="type-btn" data-id="6v6" data-min="10" data-mini="1" onclick="selectType(this)">6 vs 6</button>
+              <button class="type-btn" data-id="7v7" data-min="10" data-mini="0" onclick="selectType(this)">7 vs 7</button>
+              <button class="type-btn" data-id="8v8" data-min="16" data-mini="0" onclick="selectType(this)">8 vs 8</button>
+              <button class="type-btn" data-id="11v11" data-min="16" data-mini="0" onclick="selectType(this)">11 vs 11</button>
+            </div>
+            <div class="counter-box">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px"><div style="font-size:13px;font-weight:700;color:#191F28">도착 인원</div><div style="font-size:12px;color:#8B95A1">매니저 포함</div></div>
+              <div class="counter-row">
+                <button class="stepper" onclick="changeCount(-1)">−</button>
+                <div style="flex:1;text-align:center"><span class="counter-num" id="counter-num">8</span><span class="counter-unit">명</span></div>
+                <button class="stepper" onclick="changeCount(1)">+</button>
+              </div>
+              <div class="counter-hint">필요 최소 인원 <span class="counter-min-val" id="counter-min">10</span>명</div>
+            </div>
+            <div class="verdict-box" id="verdict-box">
+              <div class="verdict-icon" id="verdict-icon"></div>
+              <div><div class="verdict-lbl" id="verdict-label"></div><div class="verdict-desc-text" id="verdict-desc"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+    </div>
+
+    <!-- ─── STEP 3 ─────────────────────── -->
+    <div class="screen" id="s-step3">
+      <div class="kicker">진행 후</div>
+      <div class="step-title">현장을 정리하고<br>정산해요</div>
+      <div class="step-desc">아래 항목을 순서대로 확인해 주세요.</div>
+      <div class="g20"></div>
+
+      <!-- 1. 즉시 처리 -->
+      <div class="collapse-wrap">
+        <button class="collapse-trigger" onclick="toggleCollapse('c1')">
+          <div class="collapse-num">1</div>
+          <div class="collapse-label-wrap"><div class="collapse-title">현장 취소·중단 시 즉시 처리</div></div>
+          <svg class="collapse-arrow open" id="c1-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="collapse-body open" id="c1-body">
+          <div class="collapse-divider"></div>
+          <div class="risk-items">
+            <div class="risk-item normal">
+              <div class="risk-badge normal">1</div>
+              <div><div class="risk-item-title">구장 상태 사진을 상담 채널에 공유</div><div class="risk-item-desc">구장 상태를 사진으로 찍어 즉시 상담 채널에 공유해 주세요.</div></div>
+            </div>
+            <div class="risk-item normal">
+              <div class="risk-badge normal">2</div>
+              <div><div class="plain-action-title">도착하지 않은 플래버에게 안내</div><div class="risk-item-desc">아직 현장에 오지 않은 플래버에게 취소·중단 사실을 알려주세요.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="g8"></div>
+
+      <!-- 2. 리포트 작성 -->
+      <div class="collapse-wrap">
+        <button class="collapse-trigger" onclick="toggleCollapse('c2')">
+          <div class="collapse-num">2</div>
+          <div class="collapse-label-wrap"><div class="collapse-title">리포트 작성 상세 확인</div><div class="collapse-badge-txt">다음 날 오전 8시까지</div></div>
+          <svg class="collapse-arrow" id="c2-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="collapse-body" id="c2-body">
+          <div class="collapse-divider"></div>
+          <div style="font-size:12px;font-weight:500;color:#8B95A1;margin-bottom:12px">현장 상황을 자세히 작성해 주세요</div>
+          <div class="risk-items">
+            <div class="risk-item normal">
+              <div class="risk-badge normal">1</div>
+              <div><div class="risk-item-title">귀가자 닉네임·귀가 시점</div><div class="risk-item-desc">언제 자리를 떴는지 정확히 적어주세요.</div></div>
+            </div>
+            <div class="risk-item normal">
+              <div class="risk-badge normal">2</div>
+              <div><div class="risk-item-title">무단 불참자 닉네임·비매너 신고</div><div class="risk-item-desc">사전 안내 없이 오지 않은 플래버는 비매너 신고도 함께 처리해 주세요.</div></div>
+            </div>
+            <div class="risk-item normal">
+              <div class="risk-badge normal">3</div>
+              <div><div class="risk-item-title">미니게임 진행 여부·진행 시간</div><div class="risk-item-desc">미니게임으로 전환했다면 시작·종료 시간을 함께 작성해 주세요.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="g8"></div>
+
+      <!-- 3. 강수 매치 체크 기준 -->
+      <div class="collapse-wrap">
+        <button class="collapse-trigger" onclick="toggleCollapse('c3')">
+          <div class="collapse-num">3</div>
+          <div class="collapse-label-wrap"><div class="collapse-title">강수 매치 체크 기준</div></div>
+          <svg class="collapse-arrow" id="c3-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="collapse-body" id="c3-body">
+          <div class="collapse-divider"></div>
+          <!-- 체크 기준 안내 -->
+          <div class="check-warn">
+            <div class="check-warn-desc">아래 기준에 해당할 때만 강수 매치로 체크해 주세요.</div>
+          </div>
+          <!-- 체크 기준 -->
+          <div class="check-group-label">체크 기준</div>
+          <div class="check-bullets">
+            <div class="check-bullet">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">최소 1쿼터 동안 시간당 1mm 이상의 비/눈이 내릴 때만 강수 매치로 체크해요.</div>
+            </div>
+            <div class="check-bullet">
+              <div class="check-dot no"><svg width="9" height="9" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <div class="check-bullet-text">실내 구장은 강수 매치로 적용되지 않아요.</div>
+            </div>
+            <div class="check-bullet">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">강수로 취소·중단되어도 프로모션비와 긴급 양도비는 지급돼요.</div>
+            </div>
+          </div>
+          <!-- 구분선 -->
+          <div class="check-sep"></div>
+          <!-- 주의사항 -->
+          <div class="check-group-label">주의사항</div>
+          <div class="risk-items">
+            <div class="risk-item normal">
+              <div class="risk-badge normal">1</div>
+              <div><div class="risk-item-title">잠깐 내리는 비는 체크하지 마세요</div><div class="risk-item-desc">같은 시간대·권역의 매니저들이 체크하지 않으면 강수로 적용되지 않을 수 있어요.</div></div>
+            </div>
+            <div class="risk-item normal">
+              <div class="risk-badge normal">2</div>
+              <div><div class="risk-item-title">누락 시 정산되지 않아요</div><div class="risk-item-desc">조건에 해당하면 꼭 체크해 주세요. 누락된 건은 정산에 반영되지 않아요.</div></div>
+            </div>
+            <div class="risk-item normal">
+              <div class="risk-badge normal">3</div>
+              <div><div class="risk-item-title">거짓 체크 시 권한이 해지돼요</div><div class="risk-item-desc">사실과 다르게 체크하면 매치비 미정산과 함께 매니저 권한이 해지될 수 있어요.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="g8"></div>
+
+      <!-- 참고. 정산 기준 -->
+      <div class="collapse-wrap">
+        <button class="collapse-trigger" onclick="toggleCollapse('c4')">
+          <div class="collapse-num ref">참고</div>
+          <div class="collapse-label-wrap"><div class="collapse-title">정산 기준</div></div>
+          <svg class="collapse-arrow" id="c4-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="collapse-body" id="c4-body">
+          <div class="collapse-divider"></div>
+          <div class="settle-group">
+            <div class="settle-group-label">현장 취소</div>
+            <div class="settle-wrap"><div class="settle-row"><div class="settle-sign info">×</div><div style="flex:1;min-width:0"><div class="settle-label" style="flex:none">모든 매치 타입</div><div class="settle-sub">강수로 매치가 현장 취소된 경우</div></div><div class="settle-amount neutral">10,000원</div></div></div>
+          </div>
+          <div class="settle-group">
+            <div class="settle-group-label">시간별 진행</div>
+            <div class="settle-wrap">
+              <div class="settle-row"><div class="settle-sign minus">−</div><div class="settle-label">30분 미만 진행</div><div class="settle-amount minus">-10,000원</div></div>
+              <div class="settle-row"><div class="settle-sign minus">−</div><div class="settle-label">30분 ~ 1시간 30분 미만</div><div class="settle-amount minus">-5,000원</div></div>
+              <div class="settle-row"><div class="settle-sign eq">=</div><div class="settle-label">1시간 30분 이상 진행</div><div class="settle-amount neutral">기본 매치비</div></div>
+              <div class="settle-row"><div class="settle-sign plus">+</div><div style="flex:1;min-width:0"><div class="settle-label" style="flex:none">2시간 정상 진행</div><div class="settle-sub">눈/비가 왔지만 매치를 모두 진행했어요 — 체크 필수</div></div><div class="settle-amount plus">+5,000원</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+    </div>
+
+  </div>
+
+  <div class="footer" id="footer" style="display:none">
+    <button class="btn btn-tertiary" id="cta-btn" onclick="ctaClick()">
+      <span id="cta-label">다음</span>
+      <svg id="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const CTA={'s-step1':{label:'다음 — 진행 중',next:'s-step2',style:'tertiary'},'s-step2':{label:'다음 — 진행 후',next:'s-step3',style:'tertiary'},'s-step3':{label:'가이드 마치기',next:'s-intro',style:'primary',noArrow:true}};
+const HDR={'s-step1':{type:'step',n:1,label:'진행 전'},'s-step2':{type:'step',n:2,label:'진행 중'},'s-step3':{type:'step',n:3,label:'진행 후'},'s-refund':{type:'sub',title:'환불 규정 상세'},'s-intro':{type:'intro'}};
+let history=['s-intro'];
+function goTo(id){const cur=history[history.length-1];document.getElementById(cur).classList.remove('active');history.push(id);document.getElementById(id).classList.add('active');document.getElementById('scr').scrollTop=0;updateHeader(id);updateFooter(id);}
+function goBack(){if(history.length<=1)return;const cur=history[history.length-1];document.getElementById(cur).classList.remove('active');history.pop();const prev=history[history.length-1];document.getElementById(prev).classList.add('active');document.getElementById('scr').scrollTop=0;updateHeader(prev);updateFooter(prev);}
+function ctaClick(){const cur=history[history.length-1];const c=CTA[cur];if(c)goTo(c.next);}
+function updateHeader(id){const h=HDR[id]||{type:'intro'};const back=document.getElementById('back-btn');const spc=document.getElementById('hdr-spacer');const center=document.getElementById('hdr-center');const stepIds=['s-step1','s-step2','s-step3'];if(h.type==='intro'){back.style.display='none';spc.style.display='block';center.innerHTML='<div class="hdr-title">강수 매치 가이드</div>';}else if(h.type==='sub'){back.style.display='flex';spc.style.display='none';center.innerHTML=`<div class="hdr-title">${h.title}</div>`;}else{back.style.display='flex';spc.style.display='none';const idx=h.n-1;const dots=stepIds.map((_,i)=>`<div class="dot ${i<=idx?'on':''}" style="width:${i===idx?22:8}px"></div>`).join('');center.innerHTML=`<div class="step-dots">${dots}</div><div class="step-label">${h.n} / 3 · ${h.label}</div>`;}}
+function updateFooter(id){const footer=document.getElementById('footer');const c=CTA[id];if(!c){footer.style.display='none';return;}footer.style.display='block';document.getElementById('cta-btn').className=`btn btn-${c.style}`;document.getElementById('cta-label').textContent=c.label;document.getElementById('cta-arrow').style.display=c.noArrow?'none':'block';}
+const seqDone=new Set();
+function toggleSeq(n){const badge=document.getElementById('sb'+n);if(seqDone.has(n)){seqDone.delete(n);badge.classList.remove('done');badge.textContent=n;}else{seqDone.add(n);badge.classList.add('done');badge.innerHTML='<svg width="13" height="13" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';}}
+function toggleCollapse(id){const body=document.getElementById(id+'-body');const arrow=document.getElementById(id+'-arrow');const open=body.classList.contains('open');if(open){body.classList.remove('open');arrow.classList.remove('open');}else{body.classList.add('open');arrow.classList.add('open');}}
+let curMin=10,curMini=true,curArrived=8;
+function selectType(el){document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');curMin=parseInt(el.dataset.min);curMini=el.dataset.mini==='1';curArrived=curMin-1;document.getElementById('counter-num').textContent=curArrived;document.getElementById('counter-min').textContent=curMin;updateVerdict();}
+function changeCount(d){curArrived=Math.max(0,curArrived+d);document.getElementById('counter-num').textContent=curArrived;updateVerdict();}
+function updateVerdict(){const box=document.getElementById('verdict-box');const icon=document.getElementById('verdict-icon');const lbl=document.getElementById('verdict-label');const desc=document.getElementById('verdict-desc');if(curArrived>=curMin){box.className='verdict-box success';icon.className='verdict-icon success';icon.innerHTML='<svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';lbl.className='verdict-lbl success';lbl.textContent='정상 진행';desc.textContent='최소 인원을 충족했어요. 안전 안내 후 매치를 시작해 주세요.';}else if(curMini&&curArrived>=8){box.className='verdict-box warn';icon.className='verdict-icon warn';icon.textContent='!';lbl.className='verdict-lbl warn';lbl.textContent='미니게임 전환';desc.textContent=`매니저 포함 ${curArrived}명 — 5v5·6v6은 미니게임으로 진행할 수 있어요.`;}else{box.className='verdict-box error';icon.className='verdict-icon error';icon.innerHTML='<svg width="11" height="11" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';lbl.className='verdict-lbl error';lbl.textContent='현장 취소 또는 중단';desc.textContent=`최소 ${curMin}명 미만이에요. 구장 사진을 즉시 상담 채널에 공유해 주세요.`;}}
+updateVerdict();
+function selectRadio(sel,unsel){const s=document.getElementById(sel),u=document.getElementById(unsel);s.classList.add('selected');u.classList.remove('selected');s.querySelector('.radio-dot').innerHTML='<div class="radio-inner"></div>';u.querySelector('.radio-dot').innerHTML='';const slots=document.getElementById('slots');if(slots)slots.style.display=sel==='radio2'?'block':'none';}
+function toggleRCheck(el){el.classList.toggle('on');const box=el.querySelector('.rcheck-box');box.innerHTML=el.classList.contains('on')?'<svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>':'';}
+function toggleSlot(e,el){e.stopPropagation();el.classList.toggle('on');}
+</script>
+</body>
+</html>
