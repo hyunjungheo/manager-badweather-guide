@@ -79,17 +79,17 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 .nav-sub{font-size:12px;color:#4E5968;margin-top:2px;}
 
 /* Verdict rows */
-.verdict-rows{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
-.verdict-row{padding:14px 16px;border-radius:12px;display:flex;align-items:flex-start;gap:12px;}
+.verdict-rows{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:16px;}
+.verdict-row{padding:12px 10px;border-radius:12px;display:flex;flex-direction:column;align-items:flex-start;gap:6px;}
 .verdict-row.success{background:#E6F7EE;}
 .verdict-row.warn{background:#FEF3C7;}
 .verdict-row.error{background:#FFECEC;}
-.vr-tag{padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.8);font-size:11.5px;font-weight:800;flex-shrink:0;margin-top:1px;}
+.vr-tag{padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.8);font-size:11px;font-weight:800;flex-shrink:0;}
 .vr-tag.success{color:#0BA260;}
 .vr-tag.warn{color:#B45309;}
 .vr-tag.error{color:#F04438;}
-.vr-title{font-size:14.5px;font-weight:700;color:#191F28;letter-spacing:-.02em;}
-.vr-desc{font-size:12.5px;color:#4E5968;margin-top:3px;line-height:1.5;}
+.vr-title{font-size:13px;font-weight:700;color:#191F28;letter-spacing:-.02em;}
+.vr-desc{font-size:11.5px;color:#4E5968;margin-top:2px;line-height:1.45;}
 
 /* Player widget */
 .player-widget{padding:16px;}
@@ -265,7 +265,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <div class="step-body">
             <div class="step-kicker">진행 후</div>
             <div class="step-name">현장 정리·정산</div>
-            <div class="step-sub">즉시 처리 · 리포트 · 체크 기준 · 정산</div>
+            <div class="step-sub">안전 안내 · 체크 기준 · 리포트 · 정산</div>
           </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -339,11 +339,23 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <div class="step-desc">매니저 포함 도착 인원을 기준으로 매치 진행을 결정해요.</div>
       <div class="g20"></div>
 
-      <!-- 판정 기준 (바로 노출) -->
+      <!-- 판정 기준 (3열 가로) -->
       <div class="verdict-rows">
-        <div class="verdict-row success"><div class="vr-tag success">이상</div><div><div class="vr-title">정상 진행</div><div class="vr-desc">안전 안내 후 매치를 시작해 주세요.</div></div></div>
-        <div class="verdict-row warn"><div class="vr-tag warn">미만</div><div><div class="vr-title">미니게임 전환</div><div class="vr-desc">5v5·6v6에서만 가능해요. 매니저 포함 8~9명이면 미니게임으로 진행할 수 있어요.</div></div></div>
-        <div class="verdict-row error"><div class="vr-tag error">미만</div><div><div class="vr-title">현장 취소 또는 중단</div><div class="vr-desc">구장 사진을 즉시 상담 채널에 공유하고, 리포트를 작성해 주세요.</div></div></div>
+        <div class="verdict-row success">
+          <div class="vr-tag success">최소 이상</div>
+          <div class="vr-title">정상 진행</div>
+          <div class="vr-desc">안전 안내 후 시작해 주세요.</div>
+        </div>
+        <div class="verdict-row warn">
+          <div class="vr-tag warn">8~9명</div>
+          <div class="vr-title">미니게임 전환</div>
+          <div class="vr-desc">5v5·6v6만 가능해요.</div>
+        </div>
+        <div class="verdict-row error">
+          <div class="vr-tag error">최소 미만</div>
+          <div class="vr-title">현장 취소·중단</div>
+          <div class="vr-desc">사진 공유 후 리포트 작성.</div>
+        </div>
       </div>
 
       <!-- 인원 판정 도우미 (바로 노출) -->
@@ -433,44 +445,30 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
             <div class="collapse-divider"></div>
             <div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;">
               <div style="font-size:11px;font-weight:700;color:#1570FF;letter-spacing:.06em;margin-bottom:10px;">안내 멘트 예시</div>
-              <div style="font-size:14px;font-weight:500;color:#191F28;line-height:1.75;">
-                "오늘 날씨가 좋지 않아 바닥이 젖어 있을 수 있어요.<br>
-                무리하게 뛰기보다는 착지와 방향 전환에 집중해 주시고,<br>
-                몸싸움과 태클은 최대한 자제해 주세요.<br>
-                서로 배려하면서 즐거운 매치 만들어 봐요!"
-              </div>
+              <div style="font-size:14px;font-weight:500;color:#191F28;line-height:1.75;">"오늘은 바닥이 젖어 있어 미끄러울 수 있어요. 착지와 방향 전환에 주의해 주시고, 몸싸움과 태클은 최대한 자제해 주세요. 서로 배려하면서 안전하게 즐겨 봐요!"</div>
             </div>
             <div class="risk-items">
               <div class="risk-item normal">
-                <div class="risk-badge normal">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
+                <div class="risk-badge normal">1</div>
                 <div>
-                  <div class="risk-item-title">미끄러짐 주의</div>
-                  <div class="risk-item-desc">바닥이 젖어 있을 수 있어요. 착지와 방향 전환에 집중하고, 풋살화 스터드 마모 여부를 확인해 주세요.</div>
+                  <div class="risk-item-title">미끄러짐 주의 안내</div>
+                  <div class="risk-item-desc">바닥이 젖어 미끄러울 수 있으니 착지와 방향 전환에 주의하도록 안내해 주세요. 스터드 마모가 심한 플래버가 있다면 특히 주의가 필요해요.</div>
                 </div>
               </div>
               <div class="risk-item normal">
-                <div class="risk-badge normal">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <div>
-                  <div class="risk-item-title">침착한 플레이 유도</div>
-                  <div class="risk-item-desc">물기 있는 잔디에서는 터치와 스텝에 더 신경 쓰도록 안내해 주세요.</div>
-                </div>
-              </div>
-              <div class="risk-item normal">
-                <div class="risk-badge normal">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
+                <div class="risk-badge normal">2</div>
                 <div>
                   <div class="risk-item-title">몸싸움·태클 자제 요청</div>
-                  <div class="risk-item-desc">젖은 잔디 위에서는 작은 충돌도 다칠 위험이 커요. 넘어진 플래버에게 "괜찮으세요?" 한마디도 잊지 마세요.</div>
+                  <div class="risk-item-desc">젖은 잔디에서는 작은 충돌도 부상으로 이어질 수 있어요. 격한 플레이는 자제해 달라고 사전에 안내해 주세요.</div>
                 </div>
               </div>
-            </div>
-            <div style="margin-top:14px;padding:12px 14px;border-radius:10px;background:#F7F8FA;border-left:3px solid #1570FF;">
-              <div style="font-size:12.5px;color:#4E5968;line-height:1.65;">비 오는 날에도 즐거움은 계속돼요. 조금 더 천천히, 서로를 배려하면 특별한 매치가 됩니다 ☔</div>
+              <div class="risk-item normal">
+                <div class="risk-badge normal">3</div>
+                <div>
+                  <div class="risk-item-title">침착한 플레이 당부</div>
+                  <div class="risk-item-desc">볼 터치와 스텝이 평소보다 불안정할 수 있어요. 무리하게 뛰기보다 천천히 즐길 수 있도록 분위기를 만들어 주세요.</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -569,14 +567,10 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <div class="risk-items">
             <div class="risk-item normal">
               <div class="risk-badge normal">1</div>
-              <div><div class="risk-item-title">잠깐 내리는 비는 체크하지 마세요</div><div class="risk-item-desc">같은 시간대·권역의 매니저들이 체크하지 않으면 강수로 적용되지 않을 수 있어요.</div></div>
-            </div>
-            <div class="risk-item normal">
-              <div class="risk-badge normal">2</div>
               <div><div class="risk-item-title">누락 시 정산되지 않아요</div><div class="risk-item-desc">조건에 해당하면 꼭 체크해 주세요. 누락된 건은 정산에 반영되지 않아요.</div></div>
             </div>
             <div class="risk-item normal">
-              <div class="risk-badge normal">3</div>
+              <div class="risk-badge normal">2</div>
               <div><div class="risk-item-title">거짓 체크 시 권한이 해지돼요</div><div class="risk-item-desc">사실과 다르게 체크하면 매치비 미정산과 함께 매니저 권한이 해지될 수 있어요.</div></div>
             </div>
           </div>
