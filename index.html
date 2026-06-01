@@ -281,15 +281,8 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           </div>
         </div>
         <div class="seq-item">
-          <div class="seq-left"><div class="seq-badge" id="sb2" onclick="toggleSeq(2)">2</div><div class="seq-line"></div></div>
+          <div class="seq-left"><div class="seq-badge" id="sb2" onclick="toggleSeq(2)">2</div></div>
           <div class="seq-right" onclick="toggleSeq(2)">
-            <div class="seq-title">안전 수칙 안내</div>
-            <div class="seq-desc">미끄러짐 주의·무리한 플레이 자제를 안내해 주세요.</div>
-          </div>
-        </div>
-        <div class="seq-item">
-          <div class="seq-left"><div class="seq-badge" id="sb3" onclick="toggleSeq(3)">3</div></div>
-          <div class="seq-right" onclick="toggleSeq(3)">
             <div class="seq-title">늦는 플래버에게 연락</div>
             <div class="seq-desc">도착하지 않은 플래버에게 연락해 도착 시점을 확인해 주세요.</div>
           </div>
@@ -302,7 +295,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#F04438" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#F04438" stroke-width="2" stroke-linecap="round"/></svg>
           <span class="refund-label">예외 없이 환불 불가</span>
         </div>
-        <div class="refund-title">현장에 도착하지 않은 플래버는 어떤 경우에도 환불되지 않아요.</div>
+        <div class="refund-title">현장에 도착하지 않은 플래버는 환불되지 않아요.</div>
       </div>
       <button class="nav-row" onclick="goTo('s-refund')">
         <div class="nav-icon-wrap">
@@ -439,7 +432,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <!-- 매치 유형별 최소 인원 -->
       <div class="collapse-wrap">
         <button class="collapse-trigger" onclick="toggleCollapse('cm')">
-          <div class="collapse-num ref" style="font-style:italic;font-size:12px;">i</div>
+          <div class="collapse-num ref" style="font-size:12px;">i</div>
           <div class="collapse-label-wrap"><div class="collapse-title">매치 유형별 최소 인원</div></div>
           <svg class="collapse-arrow" id="cm-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -502,7 +495,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 
       <!-- 진행 전용: 안전 안내 멘트 -->
       <div id="s3-proceed-section" style="display:none;">
-        <div class="collapse-wrap" style="background:#EEF5FF;border:1.5px solid #C5D8FF;">
+        <div class="collapse-wrap">
           <button class="collapse-trigger" onclick="toggleCollapse('cs')">
             <div class="collapse-num">1</div>
             <div class="collapse-label-wrap">
