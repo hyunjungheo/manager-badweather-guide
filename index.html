@@ -302,7 +302,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#F04438" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#F04438" stroke-width="2" stroke-linecap="round"/></svg>
           <span class="refund-label">예외 없이 환불 불가</span>
         </div>
-        <div class="refund-title">현장에 도착하지 않은 플래버는<br>어떤 경우에도 환불되지 않아요.</div>
+        <div class="refund-title">현장에 도착하지 않은 플래버는 어떤 경우에도 환불되지 않아요.</div>
       </div>
       <button class="nav-row" onclick="goTo('s-refund')">
         <div class="nav-icon-wrap">
@@ -471,7 +471,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <div id="s3-proceed-section" style="display:none;">
         <div class="collapse-wrap" style="background:#EEF5FF;border:1.5px solid #C5D8FF;">
           <button class="collapse-trigger" onclick="toggleCollapse('cs')">
-            <div class="collapse-num icon">🛡️</div>
+            <div class="collapse-num">1</div>
             <div class="collapse-label-wrap">
               <div class="collapse-title">플래버 안전 안내 멘트</div>
               <div class="collapse-badge-txt">매치 시작 전 필수 안내</div>
@@ -553,28 +553,43 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
             매치 리포트는 <b style="color:#191F28">다음 날 오전 8시</b>까지 작성 가능해요.
           </div>
           <!-- 섹션 1: 강수 -->
-          <div class="report-section">
-            <div class="report-tag red">매치 중 눈·비가 온 경우</div>
-            <div class="report-sub-items">
-              <div class="report-sub-item"><div class="report-sub-dot"></div><span>실제 진행 시간 선택</span></div>
+          <div class="check-group-label" style="color:#F04438;">매치 중 눈·비가 온 경우</div>
+          <div class="check-bullets" style="margin-bottom:18px;">
+            <div class="check-bullet">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">실제 진행 시간 선택</div>
             </div>
           </div>
           <!-- 섹션 2: 귀가자 -->
-          <div class="report-section">
-            <div class="report-tag red">현장 귀가자가 있다면</div>
-            <div class="report-sub-items">
-              <div class="report-sub-item"><div class="report-sub-dot"></div><span>'현장 귀가자가 있었어요' 탭을 누르고</span></div>
-              <div class="report-sub-item"><div class="report-sub-dot"></div><span>귀가자를 선택</span></div>
+          <div class="check-group-label" style="color:#F04438;">현장 귀가자가 있다면</div>
+          <div class="check-bullets" style="margin-bottom:18px;">
+            <div class="check-bullet">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">'현장 귀가자가 있었어요' 탭을 누르고</div>
+            </div>
+            <div class="check-bullet">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">귀가자를 선택</div>
             </div>
           </div>
           <!-- 섹션 3: 기타 -->
-          <div class="report-section">
-            <div class="report-tag gray">"기타 할 말이 있어요"에 현장 상황 남기기</div>
-            <div class="report-sub-items">
-              <div class="report-sub-item"><div class="report-sub-dot"></div><span>귀가자의 닉네임과 귀가 시점 작성</span></div>
-              <div class="report-sub-item"><div class="report-sub-dot"></div><span>무단 불참자 닉네임 작성 및 비매너 신고</span></div>
-              <div class="report-sub-item" id="c2-item-mini"><div class="report-sub-dot"></div><span>미니게임 진행 여부 및 시간 작성</span></div>
-              <div class="report-sub-item"><div class="report-sub-dot"></div><span>제설 참여 인원 작성 <span style="color:#8B95A1;font-size:12px">(최대 4명까지 지급)</span></span></div>
+          <div class="check-group-label">"기타 할 말이 있어요"에 현장 상황 남기기</div>
+          <div class="check-bullets">
+            <div class="check-bullet">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">귀가자의 닉네임과 귀가 시점 작성</div>
+            </div>
+            <div class="check-bullet">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">무단 불참자 닉네임 작성 및 비매너 신고</div>
+            </div>
+            <div class="check-bullet" id="c2-item-mini">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">미니게임 진행 여부 및 시간 작성</div>
+            </div>
+            <div class="check-bullet">
+              <div class="check-dot ok"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <div class="check-bullet-text">제설 참여 인원 작성 <span style="color:#8B95A1;font-size:12px">(최대 4명까지 지급)</span></div>
             </div>
           </div>
         </div>
@@ -625,7 +640,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <!-- 정산 기준 -->
       <div class="collapse-wrap">
         <button class="collapse-trigger" onclick="toggleCollapse('c4')">
-          <div class="collapse-num ref" id="c4-num">참고</div>
+          <div class="collapse-num icon" id="c4-num">💰</div>
           <div class="collapse-label-wrap"><div class="collapse-title">정산 기준</div></div>
           <svg class="collapse-arrow" id="c4-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -701,9 +716,9 @@ function setupStep3(){
   if(step3Mode==='proceed'){
     cancelSec.style.display='none';
     proceedSec.style.display='';
-    c2num.className='collapse-num';c2num.textContent='1';
-    c3num.className='collapse-num';c3num.textContent='2';
-    c4num.className='collapse-num';c4num.textContent='3';
+    c2num.className='collapse-num';c2num.textContent='2';
+    c3num.className='collapse-num';c3num.textContent='3';
+    c4num.className='collapse-num';c4num.textContent='4';
     title.innerHTML='강수 매치를<br>마무리해요';
     desc.textContent='매치 시작 전 플래버들에게 안전 안내를 해주세요.';
   }else{
@@ -711,7 +726,7 @@ function setupStep3(){
     proceedSec.style.display='none';
     c2num.className='collapse-num';c2num.textContent='2';
     c3num.className='collapse-num icon';c3num.textContent='🌧️';
-    c4num.className='collapse-num ref';c4num.textContent='참고';
+    c4num.className='collapse-num icon';c4num.textContent='💰';
     title.innerHTML='현장을 정리하고<br>정산해요';
     desc.textContent='아래 항목을 순서대로 확인해 주세요.';
   }
