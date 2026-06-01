@@ -26,7 +26,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 
 /* ── Footer ── */
 .footer{flex-shrink:0;padding:12px 20px 22px;background:#fff;border-top:1px solid #F2F4F6;}
-.btn{height:52px;padding:0 16px;border-radius:14px;font-size:16px;font-weight:700;letter-spacing:-.02em;cursor:pointer;border:none;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .12s,opacity .12s;font-family:inherit;}
+.btn{height:52px;padding:0 16px;border-radius:14px;font-size:16px;font-weight:700;letter-spacing:-.02em;cursor:pointer;border:none;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .12s;font-family:inherit;}
 .btn-primary{background:#1570FF;color:#fff;}
 .btn-primary:hover{background:#0F62E8;}
 .btn-tertiary{background:#E8F1FF;color:#1570FF;}
@@ -65,7 +65,6 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 .seq-right{flex:1;padding-bottom:22px;cursor:pointer;}
 .seq-item:last-child .seq-right{padding-bottom:0;}
 .seq-title{font-size:15px;font-weight:700;color:#191F28;letter-spacing:-.02em;line-height:1.4;padding-top:5px;}
-.seq-item:has(.seq-badge.done) .seq-title{color:#8B95A1;text-decoration:line-through;}
 .seq-desc{font-size:13px;color:#6B7684;margin-top:5px;line-height:1.6;}
 
 /* ── Refund section ── */
@@ -79,7 +78,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 .nav-label{font-size:14px;font-weight:700;color:#191F28;letter-spacing:-.02em;}
 .nav-sub{font-size:12px;color:#6B7684;margin-top:2px;}
 
-/* ── Verdict rows (step2, 3열) ── */
+/* ── Verdict rows (3열) ── */
 .verdict-rows{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:16px;}
 .verdict-row{padding:12px 10px;border-radius:14px;display:flex;flex-direction:column;align-items:flex-start;gap:5px;}
 .verdict-row.success{background:#EDFBF4;border:1.5px solid #C3F0D5;}
@@ -121,7 +120,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 .verdict-lbl.error{color:#F04438;}
 .verdict-desc-text{font-size:13px;color:#4E5968;margin-top:3px;line-height:1.5;}
 
-/* ── Branch buttons (emergency guide style) ── */
+/* ── Branch buttons ── */
 .branch-btn{width:100%;text-align:left;cursor:pointer;padding:16px;border-radius:14px;display:flex;align-items:center;gap:14px;transition:background .14s;font-family:inherit;}
 .branch-btn.brand{background:#EEF5FF;border:2px solid #BFD6FF;}
 .branch-btn.brand:hover{background:#E0EDFF;}
@@ -139,7 +138,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 .min-table{border-radius:12px;background:#fff;overflow:hidden;border:1px solid #F2F4F6;}
 .min-row{padding:12px 14px;display:flex;align-items:center;gap:10px;background:#fff;}
 .min-row+.min-row{border-top:1px solid #F2F4F6;}
-.min-cat{width:36px;height:20px;border-radius:6px;background:#F2F4F6;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;}
+.min-cat{width:36px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;}
 .min-cat.futsal{color:#1570FF;background:#EEF5FF;}
 .min-cat.soccer{color:#3F6B53;background:#E8F4EE;}
 .min-label{font-size:14px;font-weight:700;color:#191F28;flex:1;}
@@ -168,9 +167,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 .risk-item{display:flex;gap:12px;align-items:flex-start;}
 .risk-badge{width:22px;height:22px;border-radius:999px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
 .risk-badge.normal{background:#ECEEF2;color:#8B95A1;}
-.risk-badge.crit{background:#F04438;color:#fff;}
 .risk-item-title{font-size:14px;font-weight:700;letter-spacing:-.02em;line-height:1.35;color:#191F28;}
-.risk-item.crit .risk-item-title{color:#F04438;}
 .risk-item-desc{font-size:12.5px;color:#6B7684;margin-top:4px;line-height:1.55;}
 .plain-action-title{font-size:14px;font-weight:700;color:#191F28;letter-spacing:-.02em;line-height:1.35;}
 
@@ -204,8 +201,17 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 
 /* ── Safety guide ── */
 .safety-card{background:#F7FAFF;border-radius:14px;padding:14px 16px;border:1.5px solid #D6E8FF;}
-.safety-quote{font-size:14px;font-weight:500;color:#191F28;line-height:1.75;font-style:italic;}
 .safety-label{font-size:11px;font-weight:800;color:#1570FF;letter-spacing:.06em;margin-bottom:8px;}
+
+/* ── Report sections ── */
+.report-section{margin-bottom:14px;}
+.report-section:last-child{margin-bottom:0;}
+.report-tag{display:inline-flex;padding:4px 10px;border-radius:6px;font-size:12.5px;font-weight:700;margin-bottom:8px;line-height:1.4;}
+.report-tag.red{background:#FFEAE8;color:#F04438;}
+.report-tag.gray{background:#F2F4F6;color:#4E5968;}
+.report-sub-items{padding-left:4px;display:flex;flex-direction:column;gap:7px;}
+.report-sub-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#4E5968;line-height:1.55;}
+.report-sub-dot{width:5px;height:5px;border-radius:999px;background:#C8CDD4;flex-shrink:0;margin-top:7px;}
 </style>
 </head>
 <body>
@@ -290,7 +296,6 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
         </div>
       </div>
       <div class="g24"></div>
-
       <div class="sec-title" style="margin-bottom:12px">플래버 환불 규정</div>
       <div class="refund-block">
         <div class="refund-no-tag">
@@ -360,17 +365,16 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
         <div class="verdict-row success">
           <div class="vr-tag success">최소 이상</div>
           <div class="vr-title">정상 진행</div>
-          <div class="vr-desc">안전 안내 후 시작해 주세요.</div>
         </div>
         <div class="verdict-row warn">
           <div class="vr-tag warn">최소 미만</div>
           <div class="vr-title">미니게임 전환</div>
-          <div class="vr-desc">5v5·6v6만 가능해요.</div>
+          <div class="vr-desc">5v5·6v6만 가능</div>
         </div>
         <div class="verdict-row error">
           <div class="vr-tag error">최소 미만</div>
           <div class="vr-title">현장 취소·중단</div>
-          <div class="vr-desc">사진 공유 후 리포트 작성.</div>
+          <div class="vr-desc">리포트 작성</div>
         </div>
       </div>
 
@@ -406,7 +410,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 
       <div class="g16"></div>
 
-      <!-- 진행 결정 버튼 (branch style) -->
+      <!-- 진행 결정 버튼 -->
       <div style="display:flex;flex-direction:column;gap:8px;">
         <button class="branch-btn brand" onclick="goToStep3('proceed')">
           <div class="branch-icon brand">
@@ -432,7 +436,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 
       <div class="g16"></div>
 
-      <!-- 매치 유형별 최소 인원 토글 -->
+      <!-- 매치 유형별 최소 인원 -->
       <div class="collapse-wrap">
         <button class="collapse-trigger" onclick="toggleCollapse('cm')">
           <div class="collapse-label-wrap"><div class="collapse-title">매치 유형별 최소 인원</div></div>
@@ -472,13 +476,13 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
               <div class="collapse-title">플래버 안전 안내 멘트</div>
               <div class="collapse-badge-txt">매치 시작 전 필수 안내</div>
             </div>
-            <svg class="collapse-arrow open" id="cs-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="collapse-arrow" id="cs-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <div class="collapse-body open" id="cs-body">
+          <div class="collapse-body" id="cs-body">
             <div class="collapse-divider"></div>
             <div class="safety-card" style="margin-bottom:14px;">
               <div class="safety-label">안내 멘트 예시</div>
-              <div class="safety-quote">"오늘은 바닥이 젖어 있어 미끄러울 수 있어요. 착지와 방향 전환에 주의해 주시고, 몸싸움과 태클은 최대한 자제해 주세요. 서로 배려하면서 안전하게 즐겨 봐요!"</div>
+              <div style="font-size:14px;font-weight:500;color:#191F28;line-height:1.75;">"오늘은 바닥이 젖어 있어 미끄러울 수 있어요. 착지와 방향 전환에 주의해 주시고, 몸싸움과 태클은 최대한 자제해 주세요. 서로 배려하면서 안전하게 즐겨 봐요!"</div>
             </div>
             <div class="risk-items">
               <div class="risk-item normal">
@@ -510,54 +514,67 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 
       <!-- 취소/중단 전용 섹션 -->
       <div id="s3-cancel-section">
-
-      <!-- 1. 즉시 처리 -->
-      <div class="collapse-wrap">
-        <button class="collapse-trigger" onclick="toggleCollapse('c1')">
-          <div class="collapse-num">1</div>
-          <div class="collapse-label-wrap"><div class="collapse-title">현장 취소·중단 시 즉시 처리</div></div>
-          <svg class="collapse-arrow open" id="c1-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="collapse-body open" id="c1-body">
-          <div class="collapse-divider"></div>
-          <div class="risk-items">
-            <div class="risk-item normal">
-              <div class="risk-badge normal">1</div>
-              <div><div class="risk-item-title">구장 상태 사진을 상담 채널에 공유</div><div class="risk-item-desc">구장 상태를 사진으로 찍어 즉시 상담 채널에 공유해 주세요.</div></div>
-            </div>
-            <div class="risk-item normal">
-              <div class="risk-badge normal">2</div>
-              <div><div class="risk-item-title">도착하지 않은 플래버에게 안내</div><div class="risk-item-desc">아직 현장에 오지 않은 플래버에게 취소·중단 사실을 알려주세요.</div></div>
+        <div class="collapse-wrap">
+          <button class="collapse-trigger" onclick="toggleCollapse('c1')">
+            <div class="collapse-num">1</div>
+            <div class="collapse-label-wrap"><div class="collapse-title">현장 취소·중단 시 즉시 처리</div></div>
+            <svg class="collapse-arrow" id="c1-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="collapse-body" id="c1-body">
+            <div class="collapse-divider"></div>
+            <div class="risk-items">
+              <div class="risk-item normal">
+                <div class="risk-badge normal">1</div>
+                <div><div class="risk-item-title">구장 상태 사진을 상담 채널에 공유</div><div class="risk-item-desc">구장 상태를 사진으로 찍어 즉시 상담 채널에 공유해 주세요.</div></div>
+              </div>
+              <div class="risk-item normal">
+                <div class="risk-badge normal">2</div>
+                <div><div class="risk-item-title">도착하지 않은 플래버에게 안내</div><div class="risk-item-desc">아직 현장에 오지 않은 플래버에게 취소·중단 사실을 알려주세요.</div></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="g8"></div>
-
+        <div class="g8"></div>
       </div><!-- /s3-cancel-section -->
 
-      <!-- 리포트 작성 (진행/취소 공통, 미니게임 항목은 취소 전용) -->
-      <div class="collapse-wrap" id="c2-wrap">
+      <!-- 리포트 작성 (공통) -->
+      <div class="collapse-wrap">
         <button class="collapse-trigger" onclick="toggleCollapse('c2')">
           <div class="collapse-num" id="c2-num">2</div>
-          <div class="collapse-label-wrap"><div class="collapse-title">리포트 작성 상세 확인</div><div class="collapse-badge-txt">다음 날 오전 8시까지</div></div>
+          <div class="collapse-label-wrap">
+            <div class="collapse-title">매치 리포트 작성 방법</div>
+            <div class="collapse-badge-txt">다음 날 오전 8시까지</div>
+          </div>
           <svg class="collapse-arrow" id="c2-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="collapse-body" id="c2-body">
           <div class="collapse-divider"></div>
-          <div style="font-size:12px;font-weight:500;color:#8B95A1;margin-bottom:14px">현장 상황을 자세히 작성해 주세요</div>
-          <div class="risk-items">
-            <div class="risk-item normal">
-              <div class="risk-badge normal">1</div>
-              <div><div class="risk-item-title">귀가자 닉네임·귀가 시점</div><div class="risk-item-desc">언제 자리를 떴는지 정확히 적어주세요.</div></div>
+          <div style="font-size:12.5px;color:#6B7684;line-height:1.6;margin-bottom:16px">
+            매치 리포트는 <b style="color:#191F28">다음 날 오전 8시</b>까지 작성 가능해요.
+          </div>
+          <!-- 섹션 1: 강수 -->
+          <div class="report-section">
+            <div class="report-tag red">매치 중 눈·비가 온 경우</div>
+            <div class="report-sub-items">
+              <div class="report-sub-item"><div class="report-sub-dot"></div><span>실제 진행 시간 선택</span></div>
             </div>
-            <div class="risk-item normal">
-              <div class="risk-badge normal">2</div>
-              <div><div class="risk-item-title">무단 불참자 닉네임·비매너 신고</div><div class="risk-item-desc">사전 안내 없이 오지 않은 플래버는 비매너 신고도 함께 처리해 주세요.</div></div>
+          </div>
+          <!-- 섹션 2: 귀가자 -->
+          <div class="report-section">
+            <div class="report-tag red">현장 귀가자가 있다면</div>
+            <div class="report-sub-items">
+              <div class="report-sub-item"><div class="report-sub-dot"></div><span>'현장 귀가자가 있었어요' 탭을 누르고</span></div>
+              <div class="report-sub-item"><div class="report-sub-dot"></div><span>귀가자를 선택</span></div>
             </div>
-            <div class="risk-item normal" id="c2-item-mini">
-              <div class="risk-badge normal">3</div>
-              <div><div class="risk-item-title">미니게임 진행 여부·진행 시간</div><div class="risk-item-desc">미니게임으로 전환했다면 시작·종료 시간을 함께 작성해 주세요.</div></div>
+          </div>
+          <!-- 섹션 3: 기타 -->
+          <div class="report-section">
+            <div class="report-tag gray">"기타 할 말이 있어요"에 현장 상황 남기기</div>
+            <div class="report-sub-items">
+              <div class="report-sub-item"><div class="report-sub-dot"></div><span>귀가자의 닉네임과 귀가 시점 작성</span></div>
+              <div class="report-sub-item"><div class="report-sub-dot"></div><span>무단 불참자 닉네임 작성 및 비매너 신고</span></div>
+              <div class="report-sub-item" id="c2-item-mini"><div class="report-sub-dot"></div><span>미니게임 진행 여부 및 시간 작성</span></div>
+              <div class="report-sub-item"><div class="report-sub-dot"></div><span>제설 참여 인원 작성 <span style="color:#8B95A1;font-size:12px">(최대 4명까지 지급)</span></span></div>
             </div>
           </div>
         </div>
@@ -565,7 +582,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <div class="g8"></div>
 
       <!-- 강수 매치 체크 기준 -->
-      <div class="collapse-wrap" id="c3-wrap">
+      <div class="collapse-wrap">
         <button class="collapse-trigger" onclick="toggleCollapse('c3')">
           <div class="collapse-num icon" id="c3-num">🌧️</div>
           <div class="collapse-label-wrap"><div class="collapse-title">강수 매치 체크 기준</div></div>
@@ -594,7 +611,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <div class="risk-items">
             <div class="risk-item normal">
               <div class="risk-badge normal">1</div>
-              <div><div class="risk-item-title">누락 시 정산되지 않아요</div><div class="risk-item-desc">조건에 해당하면 꼭 체크해 주세요. 누락된 건은 정산에 반영되지 않아요.</div></div>
+              <div><div class="risk-item-title">체크 누락 시 정산되지 않아요</div><div class="risk-item-desc">조건에 해당하면 꼭 체크해 주세요. 누락된 건은 정산에 반영되지 않아요.</div></div>
             </div>
             <div class="risk-item normal">
               <div class="risk-badge normal">2</div>
@@ -605,10 +622,10 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       </div>
       <div class="g8"></div>
 
-      <!-- 참고. 정산 기준 -->
+      <!-- 정산 기준 -->
       <div class="collapse-wrap">
         <button class="collapse-trigger" onclick="toggleCollapse('c4')">
-          <div class="collapse-num ref">참고</div>
+          <div class="collapse-num ref" id="c4-num">참고</div>
           <div class="collapse-label-wrap"><div class="collapse-title">정산 기준</div></div>
           <svg class="collapse-arrow" id="c4-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -676,22 +693,25 @@ function goToStep3(mode){step3Mode=mode;setupStep3();goTo('s-step3');}
 function setupStep3(){
   const cancelSec=document.getElementById('s3-cancel-section');
   const proceedSec=document.getElementById('s3-proceed-section');
-  const miniItem=document.getElementById('c2-item-mini');
   const c2num=document.getElementById('c2-num');
+  const c3num=document.getElementById('c3-num');
+  const c4num=document.getElementById('c4-num');
   const title=document.getElementById('s3-title');
   const desc=document.getElementById('s3-desc');
   if(step3Mode==='proceed'){
     cancelSec.style.display='none';
     proceedSec.style.display='';
-    miniItem.style.display='none';
-    c2num.textContent='2';
+    c2num.className='collapse-num';c2num.textContent='1';
+    c3num.className='collapse-num';c3num.textContent='2';
+    c4num.className='collapse-num';c4num.textContent='3';
     title.innerHTML='강수 매치를<br>마무리해요';
     desc.textContent='매치 시작 전 플래버들에게 안전 안내를 해주세요.';
   }else{
     cancelSec.style.display='';
     proceedSec.style.display='none';
-    miniItem.style.display='';
-    c2num.textContent='2';
+    c2num.className='collapse-num';c2num.textContent='2';
+    c3num.className='collapse-num icon';c3num.textContent='🌧️';
+    c4num.className='collapse-num ref';c4num.textContent='참고';
     title.innerHTML='현장을 정리하고<br>정산해요';
     desc.textContent='아래 항목을 순서대로 확인해 주세요.';
   }
