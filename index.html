@@ -336,7 +336,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
     <div class="screen" id="s-step2">
       <div class="kicker">진행 중</div>
       <div class="step-title">진행 여부를<br>결정해요</div>
-      <div class="step-desc">매니저 포함 도착 인원을 기준으로 정상 진행·미니게임 전환·현장 취소를 판단해요.</div>
+      <div class="step-desc">매니저 포함 도착 인원을 기준으로 매치 진행을 결정해요.</div>
       <div class="g20"></div>
 
       <!-- 판정 기준 (바로 노출) -->
@@ -345,28 +345,6 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
         <div class="verdict-row warn"><div class="vr-tag warn">미만</div><div><div class="vr-title">미니게임 전환</div><div class="vr-desc">5v5·6v6에서만 가능해요. 매니저 포함 8~9명이면 미니게임으로 진행할 수 있어요.</div></div></div>
         <div class="verdict-row error"><div class="vr-tag error">미만</div><div><div class="vr-title">현장 취소 또는 중단</div><div class="vr-desc">구장 사진을 즉시 상담 채널에 공유하고, 리포트를 작성해 주세요.</div></div></div>
       </div>
-
-      <!-- 매치 유형별 최소 인원 토글 -->
-      <div class="collapse-wrap">
-        <button class="collapse-trigger" onclick="toggleCollapse('cm')">
-          <div class="collapse-label-wrap"><div class="collapse-title">매치 유형별 최소 인원</div></div>
-          <svg class="collapse-arrow" id="cm-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="collapse-body" id="cm-body">
-          <div class="collapse-divider"></div>
-          <div class="min-table">
-            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">4 vs 4</div></div><span class="min-num">6</span><span class="min-unit">명</span></div>
-            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">5 vs 5</div><div class="min-note">8~9명이면 미니게임 전환 가능</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
-            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">6 vs 6</div><div class="min-note">8~9명이면 미니게임 전환 가능</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
-            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">7 vs 7</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
-            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">8 vs 8</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
-            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">11 vs 11</div><div class="min-note">구장에 따라 20명</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
-          </div>
-          <div class="note-text">미니게임 전환은 5v5·6v6에서만 가능해요. 매니저 포함 8~9명일 때 적용할 수 있어요.</div>
-        </div>
-      </div>
-
-      <div class="g8"></div>
 
       <!-- 인원 판정 도우미 (바로 노출) -->
       <div style="background:#F7F8FA;border-radius:14px;padding:16px;">
@@ -409,6 +387,28 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
         </button>
       </div>
 
+      <div class="g16"></div>
+
+      <!-- 매치 유형별 최소 인원 토글 -->
+      <div class="collapse-wrap">
+        <button class="collapse-trigger" onclick="toggleCollapse('cm')">
+          <div class="collapse-label-wrap"><div class="collapse-title">매치 유형별 최소 인원</div></div>
+          <svg class="collapse-arrow" id="cm-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="collapse-body" id="cm-body">
+          <div class="collapse-divider"></div>
+          <div class="min-table">
+            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">4 vs 4</div></div><span class="min-num">6</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">5 vs 5</div><div class="min-note">8~9명이면 미니게임 전환 가능</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">6 vs 6</div><div class="min-note">8~9명이면 미니게임 전환 가능</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">7 vs 7</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">8 vs 8</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">11 vs 11</div><div class="min-note">구장에 따라 20명</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
+          </div>
+          <div class="note-text">미니게임 전환은 5v5·6v6에서만 가능해요. 매니저 포함 8~9명일 때 적용할 수 있어요.</div>
+        </div>
+      </div>
+
       <div class="spacer"></div>
     </div>
 
@@ -418,6 +418,64 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <div class="step-title" id="s3-title">현장을 정리하고<br>정산해요</div>
       <div class="step-desc" id="s3-desc">아래 항목을 순서대로 확인해 주세요.</div>
       <div class="g20"></div>
+
+      <!-- 진행 전용: 안전 안내 멘트 -->
+      <div id="s3-proceed-section" style="display:none;">
+        <div class="collapse-wrap" style="background:#E8F1FF;">
+          <button class="collapse-trigger" onclick="toggleCollapse('cs')">
+            <div class="collapse-num" style="background:#1570FF;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="collapse-label-wrap"><div class="collapse-title">플래버 안전 안내 멘트</div><div class="collapse-badge-txt">매치 시작 전 필수 안내</div></div>
+            <svg class="collapse-arrow open" id="cs-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="collapse-body open" id="cs-body">
+            <div class="collapse-divider"></div>
+            <div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;">
+              <div style="font-size:11px;font-weight:700;color:#1570FF;letter-spacing:.06em;margin-bottom:10px;">안내 멘트 예시</div>
+              <div style="font-size:14px;font-weight:500;color:#191F28;line-height:1.75;">
+                "오늘 날씨가 좋지 않아 바닥이 젖어 있을 수 있어요.<br>
+                무리하게 뛰기보다는 착지와 방향 전환에 집중해 주시고,<br>
+                몸싸움과 태클은 최대한 자제해 주세요.<br>
+                서로 배려하면서 즐거운 매치 만들어 봐요!"
+              </div>
+            </div>
+            <div class="risk-items">
+              <div class="risk-item normal">
+                <div class="risk-badge normal">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <div class="risk-item-title">미끄러짐 주의</div>
+                  <div class="risk-item-desc">바닥이 젖어 있을 수 있어요. 착지와 방향 전환에 집중하고, 풋살화 스터드 마모 여부를 확인해 주세요.</div>
+                </div>
+              </div>
+              <div class="risk-item normal">
+                <div class="risk-badge normal">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <div class="risk-item-title">침착한 플레이 유도</div>
+                  <div class="risk-item-desc">물기 있는 잔디에서는 터치와 스텝에 더 신경 쓰도록 안내해 주세요.</div>
+                </div>
+              </div>
+              <div class="risk-item normal">
+                <div class="risk-badge normal">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <div class="risk-item-title">몸싸움·태클 자제 요청</div>
+                  <div class="risk-item-desc">젖은 잔디 위에서는 작은 충돌도 다칠 위험이 커요. 넘어진 플래버에게 "괜찮으세요?" 한마디도 잊지 마세요.</div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:14px;padding:12px 14px;border-radius:10px;background:#F7F8FA;border-left:3px solid #1570FF;">
+              <div style="font-size:12.5px;color:#4E5968;line-height:1.65;">비 오는 날에도 즐거움은 계속돼요. 조금 더 천천히, 서로를 배려하면 특별한 매치가 됩니다 ☔</div>
+            </div>
+          </div>
+        </div>
+        <div class="g8"></div>
+      </div>
 
       <!-- 취소/중단 전용 섹션 -->
       <div id="s3-cancel-section">
@@ -568,7 +626,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 const CTA={'s-step1':{label:'다음 — 진행 중',next:'s-step2',style:'tertiary'},'s-step3':{label:'가이드 마치기',next:'s-intro',style:'primary',noArrow:true}};
 let step3Mode=null;
 function goToStep3(mode){step3Mode=mode;setupStep3();goTo('s-step3');}
-function setupStep3(){const cancelSec=document.getElementById('s3-cancel-section');const title=document.getElementById('s3-title');const desc=document.getElementById('s3-desc');if(step3Mode==='proceed'){cancelSec.style.display='none';title.innerHTML='강수 매치를<br>마무리해요';desc.textContent='아래 항목을 확인해 주세요.';}else{cancelSec.style.display='';title.innerHTML='현장을 정리하고<br>정산해요';desc.textContent='아래 항목을 순서대로 확인해 주세요.';}}
+function setupStep3(){const cancelSec=document.getElementById('s3-cancel-section');const proceedSec=document.getElementById('s3-proceed-section');const title=document.getElementById('s3-title');const desc=document.getElementById('s3-desc');if(step3Mode==='proceed'){cancelSec.style.display='none';proceedSec.style.display='';title.innerHTML='강수 매치를<br>마무리해요';desc.textContent='매치 시작 전 플래버들에게 안전 안내를 해주세요.';}else{cancelSec.style.display='';proceedSec.style.display='none';title.innerHTML='현장을 정리하고<br>정산해요';desc.textContent='아래 항목을 순서대로 확인해 주세요.';}}
 const HDR={'s-step1':{type:'step',n:1,label:'진행 전'},'s-step2':{type:'step',n:2,label:'진행 중'},'s-step3':{type:'step',n:3,label:'진행 후'},'s-refund':{type:'sub',title:'환불 규정 상세'},'s-intro':{type:'intro'}};
 let history=['s-intro'];
 function goTo(id){const cur=history[history.length-1];document.getElementById(cur).classList.remove('active');history.push(id);document.getElementById(id).classList.add('active');document.getElementById('scr').scrollTop=0;updateHeader(id);updateFooter(id);}
