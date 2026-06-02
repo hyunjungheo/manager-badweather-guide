@@ -154,7 +154,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 .collapse-num.ref{background:#E5E8EB;color:#8B95A1;font-size:10px;font-weight:700;letter-spacing:-.01em;}
 .collapse-num.icon{background:#E8F1FF;font-size:15px;font-weight:400;}
 .collapse-label-wrap{flex:1;}
-.collapse-title{font-size:15px;font-weight:800;color:#191F28;letter-spacing:-.02em;}
+.collapse-title{font-size:15px;font-weight:700;color:#191F28;letter-spacing:-.02em;}
 .collapse-badge-txt{font-size:11.5px;color:#8B95A1;margin-top:2px;}
 .collapse-arrow{transition:transform .22s;flex-shrink:0;color:#C8CDD4;}
 .collapse-arrow.open{transform:rotate(180deg);}
@@ -372,16 +372,15 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       </div>
 
       <!-- 인원 판정 도우미 -->
-      <div style="background:#F7F8FA;border-radius:16px;padding:16px;border:1px solid #ECEEF2;">
-        <div style="font-size:13px;font-weight:800;color:#191F28;letter-spacing:-.02em;margin-bottom:14px;">인원 판정 도우미</div>
-        <div style="font-size:11.5px;font-weight:700;color:#8B95A1;margin-bottom:8px;letter-spacing:.03em;">매치 유형</div>
+      <div>
+        <div class="check-group-label" style="margin-bottom:10px;">인원 판정 도우미</div>
         <div class="type-grid" id="type-grid">
-          <button class="type-btn" data-id="4v4" data-min="6" data-mini="0" onclick="selectType(this)">4 vs 4</button>
-          <button class="type-btn active" data-id="5v5" data-min="10" data-mini="1" onclick="selectType(this)">5 vs 5</button>
-          <button class="type-btn" data-id="6v6" data-min="10" data-mini="1" onclick="selectType(this)">6 vs 6</button>
-          <button class="type-btn" data-id="7v7" data-min="10" data-mini="0" onclick="selectType(this)">7 vs 7</button>
-          <button class="type-btn" data-id="8v8" data-min="16" data-mini="0" onclick="selectType(this)">8 vs 8</button>
-          <button class="type-btn" data-id="11v11" data-min="16" data-mini="0" onclick="selectType(this)">11 vs 11</button>
+          <button class="type-btn" data-id="4v4" data-min="6" data-mini="0" data-max="12" onclick="selectType(this)">4 vs 4</button>
+          <button class="type-btn active" data-id="5v5" data-min="10" data-mini="1" data-max="15" onclick="selectType(this)">5 vs 5</button>
+          <button class="type-btn" data-id="6v6" data-min="10" data-mini="1" data-max="18" onclick="selectType(this)">6 vs 6</button>
+          <button class="type-btn" data-id="7v7" data-min="10" data-mini="0" data-max="21" onclick="selectType(this)">7 vs 7</button>
+          <button class="type-btn" data-id="8v8" data-min="16" data-mini="0" data-max="24" onclick="selectType(this)">8 vs 8</button>
+          <button class="type-btn" data-id="11v11" data-min="16" data-mini="0" data-max="30" onclick="selectType(this)">11 vs 11</button>
         </div>
         <div class="counter-box">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
@@ -401,7 +400,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
         </div>
       </div>
 
-      <div class="g16"></div>
+      <div class="g12"></div>
 
       <!-- 진행 결정 버튼 -->
       <div style="display:flex;flex-direction:column;gap:8px;">
@@ -440,8 +439,8 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <div class="collapse-divider"></div>
           <div class="min-table">
             <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">4 vs 4</div></div><span class="min-num">6</span><span class="min-unit">명</span></div>
-            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">5 vs 5</div><div class="min-note">8~9명이면 미니게임 전환 가능</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
-            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">6 vs 6</div><div class="min-note">8~9명이면 미니게임 전환 가능</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">5 vs 5</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
+            <div class="min-row"><div class="min-cat futsal">풋살</div><div style="flex:1"><div class="min-label">6 vs 6</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
             <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">7 vs 7</div></div><span class="min-num">10</span><span class="min-unit">명</span></div>
             <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">8 vs 8</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
             <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">11 vs 11</div><div class="min-note">구장에 따라 20명</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
@@ -712,9 +711,9 @@ function updateFooter(id){const footer=document.getElementById('footer');const c
 const seqDone=new Set();
 function toggleSeq(n){const badge=document.getElementById('sb'+n);if(seqDone.has(n)){seqDone.delete(n);badge.classList.remove('done');badge.textContent=n;}else{seqDone.add(n);badge.classList.add('done');badge.innerHTML='<svg width="13" height="13" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';}}
 function toggleCollapse(id){const body=document.getElementById(id+'-body');const arrow=document.getElementById(id+'-arrow');const open=body.classList.contains('open');if(open){body.classList.remove('open');arrow.classList.remove('open');}else{body.classList.add('open');arrow.classList.add('open');}}
-let curMin=10,curMini=true,curArrived=8;
-function selectType(el){document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');curMin=parseInt(el.dataset.min);curMini=el.dataset.mini==='1';curArrived=curMin-1;document.getElementById('counter-num').textContent=curArrived;document.getElementById('counter-min').textContent=curMin;updateVerdict();}
-function changeCount(d){curArrived=Math.max(0,curArrived+d);document.getElementById('counter-num').textContent=curArrived;updateVerdict();}
+let curMin=10,curMini=true,curArrived=8,curMax=15;
+function selectType(el){document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');curMin=parseInt(el.dataset.min);curMini=el.dataset.mini==='1';curMax=parseInt(el.dataset.max);curArrived=curMin-1;document.getElementById('counter-num').textContent=curArrived;document.getElementById('counter-min').textContent=curMin;updateVerdict();}
+function changeCount(d){curArrived=Math.min(curMax+1,Math.max(0,curArrived+d));document.getElementById('counter-num').textContent=curArrived;updateVerdict();}
 function updateVerdict(){const box=document.getElementById('verdict-box');const icon=document.getElementById('verdict-icon');const lbl=document.getElementById('verdict-label');const desc=document.getElementById('verdict-desc');if(curArrived>=curMin){box.className='verdict-box success';icon.className='verdict-icon success';icon.innerHTML='<svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';lbl.className='verdict-lbl success';lbl.textContent='정상 진행';desc.textContent='최소 인원을 충족했어요. 안전 안내 후 매치를 시작해 주세요.';}else if(curMini&&curArrived>=8){box.className='verdict-box warn';icon.className='verdict-icon warn';icon.textContent='!';lbl.className='verdict-lbl warn';lbl.textContent='미니게임 전환';desc.textContent=`최소 ${curMin}명 미만이에요. 미니게임으로 진행할 수 있어요.`;}else{box.className='verdict-box error';icon.className='verdict-icon error';icon.innerHTML='<svg width="11" height="11" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';lbl.className='verdict-lbl error';lbl.textContent='현장 취소 또는 중단';desc.textContent=`최소 ${curMin}명 미만이에요. 구장 사진을 즉시 상담 채널에 공유해 주세요.`;}}
 updateVerdict();
 
