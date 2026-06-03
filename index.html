@@ -232,21 +232,21 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <div class="g20"></div>
       <div class="big-kicker">매니저 가이드</div>
       <div class="page-title">강수 매치<br>진행 가이드</div>
-      <div class="page-desc">비·눈이 오는 매치를 안전하게 운영하기 위한 가이드예요. 진행 전·중·후 순서대로 확인해 주세요.</div>
+      <div class="page-desc">비·눈이 오는 매치를 안전하게 운영하기 위한 가이드예요. 순서대로 확인해 주세요.</div>
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
         <button class="step-entry" onclick="goTo('s-step1')">
           <div class="step-num">1</div>
           <div class="step-body">
-            <div class="step-kicker">진행 전</div>
-            <div class="step-name">도착·출석 확인</div>
-            <div class="step-sub">출석 확인 · 안전 안내 · 환불 규정</div>
+            <div class="step-kicker">출석 확인</div>
+            <div class="step-name">출석 확인</div>
+            <div class="step-sub">도착 명단 확인 · 환불 규정</div>
           </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#C8CDD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <button class="step-entry" onclick="goTo('s-step2')">
           <div class="step-num">2</div>
           <div class="step-body">
-            <div class="step-kicker">진행 중</div>
+            <div class="step-kicker">진행 결정</div>
             <div class="step-name">진행 여부 결정</div>
             <div class="step-sub">인원 판정 · 진행/취소 결정</div>
           </div>
@@ -255,9 +255,9 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
         <button class="step-entry" onclick="goTo('s-step3-select')">
           <div class="step-num">3</div>
           <div class="step-body">
-            <div class="step-kicker">진행 후</div>
+            <div class="step-kicker">마무리</div>
             <div class="step-name">현장 정리·정산</div>
-            <div class="step-sub">안전 안내 · 체크 기준 · 리포트 · 정산</div>
+            <div class="step-sub">리포트 작성 · 정산 기준</div>
           </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#C8CDD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -268,8 +268,8 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
     <!-- ─── STEP 1 ─────────────────────── -->
     <div class="screen" id="s-step1">
       <div class="g20"></div>
-      <div class="kicker">진행 전</div>
-      <div class="step-title">도착·출석을<br>확인해 주세요</div>
+      <div class="kicker">출석 확인</div>
+      <div class="step-title">출석을<br>확인해 주세요</div>
       <div class="step-desc">순서대로 확인하고 탭해서 완료 처리하세요.</div>
       <div class="g20"></div>
       <div class="seq-list">
@@ -348,7 +348,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
     <!-- ─── STEP 2 ─────────────────────── -->
     <div class="screen" id="s-step2">
       <div class="g20"></div>
-      <div class="kicker">진행 중</div>
+      <div class="kicker">진행 결정</div>
       <div class="step-title">진행 여부를<br>결정해요</div>
       <div class="step-desc">매니저 포함 도착 인원을 기준으로 매치 진행을 결정해요.</div>
       <div class="g16"></div>
@@ -456,8 +456,8 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
     <!-- ─── STEP 3 SELECT ────────────────── -->
     <div class="screen" id="s-step3-select">
       <div class="g20"></div>
-      <div class="kicker">진행 후</div>
-      <div class="step-title">매치 결과를<br>선택해 주세요</div>
+      <div class="kicker">마무리</div>
+      <div class="step-title">진행 여부를<br>선택해 주세요</div>
       <div class="step-desc">진행 결과에 맞는 항목을 선택하면 이후 안내가 이어져요.</div>
       <div class="g24"></div>
       <div style="display:flex;flex-direction:column;gap:8px;">
@@ -488,7 +488,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
     <!-- ─── STEP 3 ─────────────────────── -->
     <div class="screen" id="s-step3">
       <div class="g20"></div>
-      <div class="kicker">진행 후</div>
+      <div class="kicker">마무리</div>
       <div class="step-title" id="s3-title">현장을 정리하고<br>정산해요</div>
       <div class="step-desc" id="s3-desc">아래 항목을 순서대로 확인해 주세요.</div>
       <div class="g20"></div>
@@ -702,7 +702,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 
 <script>
 const CTA={'s-step1':{label:'다음 — 진행 중',next:'s-step2',style:'tertiary'},'s-step3':{label:'가이드 마치기',next:'s-intro',style:'primary',noArrow:true}};
-const HDR={'s-step1':{type:'step',n:1,label:'진행 전'},'s-step2':{type:'step',n:2,label:'진행 중'},'s-step3':{type:'step',n:3,label:'진행 후'},'s-step3-select':{type:'step',n:3,label:'진행 후'},'s-refund':{type:'sub',title:'환불 규정'},'s-intro':{type:'intro'}};
+const HDR={'s-step1':{type:'step',n:1,label:'출석 확인'},'s-step2':{type:'step',n:2,label:'진행 결정'},'s-step3':{type:'step',n:3,label:'마무리'},'s-step3-select':{type:'step',n:3,label:'마무리'},'s-refund':{type:'sub',title:'환불 규정'},'s-intro':{type:'intro'}};
 let history=['s-intro'];
 function goTo(id){const cur=history[history.length-1];document.getElementById(cur).classList.remove('active');history.push(id);document.getElementById(id).classList.add('active');document.getElementById('scr').scrollTop=0;updateHeader(id);updateFooter(id);}
 function goBack(){if(history.length<=1)return;const cur=history[history.length-1];document.getElementById(cur).classList.remove('active');history.pop();const prev=history[history.length-1];document.getElementById(prev).classList.add('active');document.getElementById('scr').scrollTop=0;updateHeader(prev);updateFooter(prev);}
