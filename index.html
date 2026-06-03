@@ -230,9 +230,19 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
     <!-- ─── INTRO ─────────────────────── -->
     <div class="screen active" id="s-intro">
       <div class="g20"></div>
-      <div class="big-kicker">매니저 가이드</div>
-      <div class="page-title">강수 매치<br>진행 가이드</div>
-      <div class="page-desc">비·눈이 오는 매치를 안전하게 운영하기 위한 가이드예요. 순서대로 확인해 주세요.</div>
+      <!-- hero -->
+      <div style="position:relative;border-radius:20px;background:linear-gradient(135deg,#1570FF 0%,#38BDF8 100%);padding:24px 20px 20px;margin-bottom:20px;overflow:hidden;">
+        <div style="position:absolute;top:-18px;right:-18px;width:90px;height:90px;border-radius:999px;background:rgba(255,255,255,.10);"></div>
+        <div style="position:absolute;bottom:-24px;right:20px;width:60px;height:60px;border-radius:999px;background:rgba(255,255,255,.08);"></div>
+        <div style="font-size:11px;font-weight:800;color:rgba(255,255,255,.7);letter-spacing:.12em;margin-bottom:8px;text-transform:uppercase;">Manager Guide</div>
+        <div style="font-size:28px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.04em;">강수 매치<br>진행 가이드</div>
+        <div style="margin-top:10px;font-size:13px;color:rgba(255,255,255,.82);line-height:1.65;">비·눈이 오는 매치를 안전하게<br>운영하기 위한 가이드예요.</div>
+        <div style="position:absolute;right:20px;bottom:18px;font-size:44px;line-height:1;">⛈️</div>
+      </div>
+      <div class="big-kicker" style="display:none;">매니저 가이드</div>
+      <div class="page-title" style="display:none;">강수 매치<br>진행 가이드</div>
+      <div class="page-desc" style="display:none;">비·눈이 오는 매치를 안전하게 운영하기 위한 가이드예요.<br>순서대로 확인해 주세요.</div>
+      <div style="font-size:13.5px;color:#6B7684;line-height:1.65;margin-bottom:4px;">순서대로 확인해 주세요.</div>
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
         <button class="step-entry" onclick="goTo('s-step1')">
           <div class="step-num">1</div>
@@ -312,7 +322,10 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <div class="g20"></div>
       <div class="kicker">환불 규정</div>
       <div class="step-title">알림톡 유형별<br>환불 기준</div>
-      <div class="step-desc">알림톡 발송 시점에 따라 개별 귀가 환불 기준이 달라져요.<br>알림톡이 발송되지 않은 매치는 강수로 개별 귀가 시 참여하지 않은 시간만큼 환불돼요.</div>
+      <div style="margin-top:8px;display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:#191F28;line-height:1.65;"><span style="flex-shrink:0;">•</span><span>플래버가 알림톡을 수신한 시점에 따라 환불 기준이 달라져요.</span></div>
+        <div style="display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:#191F28;line-height:1.65;"><span style="flex-shrink:0;">•</span><span>알림톡이 발송되지 않은 매치는 강수로 개별 귀가 시 참여하지 않은 시간만큼 환불돼요.</span></div>
+      </div>
       <div class="g20"></div>
       <div style="padding:16px;border-radius:16px;background:#F7F8FA;border:1px solid #ECEEF2;margin-bottom:10px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
@@ -357,7 +370,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
         </div>
         <div class="verdict-row warn">
           <div class="vr-tag warn">최소 미만</div>
-          <div class="vr-title">미니게임 전환</div>
+          <div class="vr-title">미니 게임 전환</div>
           <div class="vr-desc">5v5·6v6만 가능</div>
         </div>
         <div class="verdict-row error">
@@ -442,7 +455,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
             <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">8 vs 8</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
             <div class="min-row"><div class="min-cat soccer">축구</div><div style="flex:1"><div class="min-label">11 vs 11</div><div class="min-note">구장에 따라 20명</div></div><span class="min-num">16</span><span class="min-unit">명</span></div>
           </div>
-          <div class="note-text">미니게임 전환은 5v5·6v6에서만 가능해요. 매니저 포함 8~9명일 때 적용할 수 있어요.</div>
+          <div class="note-text">미니 게임 전환은 5v5·6v6에서만 가능해요. 매니저 포함 8~9명일 때 적용할 수 있어요.</div>
         </div>
       </div>
 
@@ -578,8 +591,8 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
             <div class="risk-item">
               <div class="risk-badge" style="background:#FFEAE8;color:#F04438;">1</div>
               <div>
-                <div class="risk-item-title">매치 중 눈·비가 온 경우</div>
-                <div class="risk-item-desc">실제 진행 시간을 선택해 주세요.</div>
+                <div class="risk-item-title">매치 중 눈·비가 왔다면</div>
+                <div class="risk-item-desc">매치를 진행한 시간을 기록해 주세요.</div>
               </div>
             </div>
             <div class="risk-item">
@@ -596,7 +609,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
                 <div style="margin-top:7px;display:flex;flex-direction:column;gap:6px;">
                   <div style="font-size:13px;color:#6B7684;line-height:1.6;">· 귀가자 닉네임과 귀가 시점</div>
                   <div style="font-size:13px;color:#6B7684;line-height:1.6;">· 무단 불참자 닉네임 및 비매너 신고</div>
-                  <div id="c2-item-mini" style="font-size:13px;color:#6B7684;line-height:1.6;">· 미니게임 진행 여부 및 시간</div>
+                  <div id="c2-item-mini" style="font-size:13px;color:#6B7684;line-height:1.6;">· 미니 게임 진행 여부 및 시간</div>
 
                 </div>
               </div>
@@ -606,11 +619,11 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       </div>
       <div class="g8"></div>
 
-      <!-- 강수 매치 체크 기준 -->
+      <!-- 눈/비가 왔어요 체크 기준 -->
       <div class="collapse-wrap">
         <button class="collapse-trigger" onclick="toggleCollapse('c3')">
           <div class="collapse-num icon" id="c3-num">🌧️</div>
-          <div class="collapse-label-wrap"><div class="collapse-title">강수 매치 체크 기준</div></div>
+          <div class="collapse-label-wrap"><div class="collapse-title">눈/비가 왔어요 체크 기준</div></div>
           <svg class="collapse-arrow" id="c3-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="collapse-body" id="c3-body">
@@ -674,7 +687,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
               <div class="settle-row"><div class="settle-sign eq">=</div><div class="settle-label">1시간 30분 이상 진행</div><div class="settle-amount neutral">기본 매치비</div></div>
               <div class="settle-row">
                 <div class="settle-sign plus">+</div>
-                <div style="flex:1;min-width:0"><div class="settle-label" style="flex:none">2시간 정상 진행</div><div class="settle-sub">비·눈이 왔지만 매치를 모두 완료 — 체크 필수</div></div>
+                <div style="flex:1;min-width:0"><div class="settle-label" style="flex:none">2시간 정상 진행</div><div class="settle-sub"><span style="display:inline-flex;align-items:center;gap:3px;padding:1px 7px 1px 5px;border-radius:999px;border:1px solid #BFD6FF;background:#EEF5FF;font-size:10.5px;font-weight:700;color:#1570FF;">🌧️ 눈/비가 왔어요</span> 체크 필수</div></div>
                 <div class="settle-amount plus">+5,000원</div>
               </div>
             </div>
@@ -711,7 +724,7 @@ function toggleCollapse(id){const body=document.getElementById(id+'-body');const
 let curMin=10,curMini=true,curArrived=8,curMax=15;
 function selectType(el){document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');curMin=parseInt(el.dataset.min);curMini=el.dataset.mini==='1';curMax=parseInt(el.dataset.max);curArrived=curMin-1;document.getElementById('counter-num').textContent=curArrived;document.getElementById('counter-min').textContent=curMin;updateVerdict();}
 function changeCount(d){curArrived=Math.min(curMax+1,Math.max(0,curArrived+d));document.getElementById('counter-num').textContent=curArrived;updateVerdict();}
-function updateVerdict(){const box=document.getElementById('verdict-box');const icon=document.getElementById('verdict-icon');const lbl=document.getElementById('verdict-label');const desc=document.getElementById('verdict-desc');if(curArrived>=curMin){box.className='verdict-box success';icon.className='verdict-icon success';icon.innerHTML='<svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';lbl.className='verdict-lbl success';lbl.textContent='정상 진행';desc.textContent='최소 인원을 충족했어요. 안전 안내 후 매치를 시작해 주세요.';}else if(curMini&&curArrived>=8){box.className='verdict-box warn';icon.className='verdict-icon warn';icon.textContent='!';lbl.className='verdict-lbl warn';lbl.textContent='미니게임 전환';desc.textContent=`최소 ${curMin}명 미만이에요. 미니게임으로 진행할 수 있어요.`;}else{box.className='verdict-box error';icon.className='verdict-icon error';icon.innerHTML='<svg width="11" height="11" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';lbl.className='verdict-lbl error';lbl.textContent='현장 취소 또는 중단';desc.textContent=`최소 ${curMin}명 미만이에요. 구장 사진을 즉시 상담 채널에 공유해 주세요.`;}}
+function updateVerdict(){const box=document.getElementById('verdict-box');const icon=document.getElementById('verdict-icon');const lbl=document.getElementById('verdict-label');const desc=document.getElementById('verdict-desc');if(curArrived>=curMin){box.className='verdict-box success';icon.className='verdict-icon success';icon.innerHTML='<svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';lbl.className='verdict-lbl success';lbl.textContent='정상 진행';desc.textContent='최소 인원을 충족했어요. 안전 안내 후 매치를 시작해 주세요.';}else if(curMini&&curArrived>=8){box.className='verdict-box warn';icon.className='verdict-icon warn';icon.textContent='!';lbl.className='verdict-lbl warn';lbl.textContent='미니 게임 전환';desc.textContent=`최소 ${curMin}명 미만이에요. 미니 게임으로 진행할 수 있어요.`;}else{box.className='verdict-box error';icon.className='verdict-icon error';icon.innerHTML='<svg width="11" height="11" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';lbl.className='verdict-lbl error';lbl.textContent='현장 취소 또는 중단';desc.textContent=`최소 ${curMin}명 미만이에요. 구장 사진을 즉시 상담 채널에 공유해 주세요.`;}}
 updateVerdict();
 
 let step3Mode=null;
