@@ -200,7 +200,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 .settle-amount.neutral{color:#191F28;}
 
 /* ── Safety guide ── */
-.safety-card{background:#F7F8FA;border-radius:14px;padding:14px 16px;border:1.5px solid #ECEEF2;}
+.safety-card{background:#fff;border-radius:14px;padding:14px 16px;border:1.5px solid #ECEEF2;}
 .safety-label{font-size:11px;font-weight:800;color:#1570FF;letter-spacing:.06em;margin-bottom:8px;}
 
 /* ── Report sections ── */
@@ -239,7 +239,6 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <div class="step-body">
             <div class="step-kicker">출석 확인</div>
             <div class="step-name">출석 확인</div>
-            <div class="step-sub">도착 명단 확인 · 환불 규정</div>
           </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#C8CDD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -248,16 +247,14 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <div class="step-body">
             <div class="step-kicker">진행 결정</div>
             <div class="step-name">진행 여부 결정</div>
-            <div class="step-sub">인원 판정 · 진행/취소 결정</div>
           </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#C8CDD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <button class="step-entry" onclick="goTo('s-step3-select')">
           <div class="step-num">3</div>
           <div class="step-body">
-            <div class="step-kicker">마무리</div>
+            <div class="step-kicker">매치 정리</div>
             <div class="step-name">현장 정리·정산</div>
-            <div class="step-sub">리포트 작성 · 정산 기준</div>
           </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#C8CDD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -270,7 +267,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <div class="g20"></div>
       <div class="kicker">출석 확인</div>
       <div class="step-title">출석을<br>확인해 주세요</div>
-      <div class="step-desc">순서대로 확인하고 탭해서 완료 처리하세요.</div>
+      <div class="step-desc">순서대로 확인하고 탭해서 완료 처리해 주세요.</div>
       <div class="g20"></div>
       <div class="seq-list">
         <div class="seq-item">
@@ -303,7 +300,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
         </div>
         <div style="flex:1">
           <div class="nav-label">알림톡 유형별 개별 귀가 환불 기준</div>
-          <div class="nav-sub">일반·변동 알림톡에 따라 기준이 달라요</div>
+          <div class="nav-sub">알림톡 발송 시점에 따라 기준이 달라요</div>
         </div>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#1570FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -315,15 +312,15 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       <div class="g20"></div>
       <div class="kicker">환불 규정</div>
       <div class="step-title">알림톡 유형별<br>환불 기준</div>
-      <div class="step-desc">알림톡 발송 시점에 따라 개별 귀가 환불 기준이 달라져요.</div>
+      <div class="step-desc">알림톡 발송 시점에 따라 개별 귀가 환불 기준이 달라져요.<br>알림톡이 발송되지 않은 매치는 강수로 개별 귀가 시 참여하지 않은 시간만큼 환불돼요.</div>
       <div class="g20"></div>
       <div style="padding:16px;border-radius:16px;background:#F7F8FA;border:1px solid #ECEEF2;margin-bottom:10px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-          <span style="padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#EEF5FF;color:#1570FF;">일반 알림톡</span>
+          <span style="padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#EEF5FF;color:#1570FF;">강수 예보 안내</span>
           <span style="font-size:11.5px;color:#6B7684;font-weight:600;">매치 시작 4시간 이내 ~ 2시간 전</span>
         </div>
-        <div style="background:#fff;border-radius:10px;padding:12px 12px 8px;margin-bottom:12px;"><svg width="100%" viewBox="0 0 290 56" style="display:block"><line x1="14" y1="36" x2="276" y2="36" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/><rect x="14" y="28" width="131" height="16" rx="8" fill="#E8F1FF"/><line x1="22" y1="36" x2="137" y2="36" stroke="#1570FF" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="36" r="3.5" fill="#fff" stroke="#1570FF" stroke-width="1.5"/><circle cx="145" cy="36" r="3.5" fill="#fff" stroke="#1570FF" stroke-width="1.5"/><circle cx="276" cy="36" r="3.5" fill="#1570FF" stroke="#1570FF" stroke-width="1.5"/><text x="14" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">4시간 전</text><text x="145" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">2시간 전</text><text x="276" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">매치 시작</text><text x="79" y="20" fill="#1570FF" font-size="10.5" font-weight="800" text-anchor="middle">발송 구간</text></svg></div>
-        <div style="font-size:12.5px;color:#6B7684;line-height:1.6;margin-bottom:12px">구장에 시간당 1mm 이상 강수 예보가 확인되면 발송돼요.</div>
+        <div style="background:#fff;border-radius:10px;padding:12px 12px 8px;margin-bottom:12px;"><svg width="100%" viewBox="0 0 290 56" style="display:block"><line x1="14" y1="36" x2="276" y2="36" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/><rect x="14" y="28" width="131" height="16" rx="8" fill="#E8F1FF"/><line x1="22" y1="36" x2="137" y2="36" stroke="#1570FF" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="36" r="3.5" fill="#fff" stroke="#1570FF" stroke-width="1.5"/><circle cx="145" cy="36" r="3.5" fill="#fff" stroke="#1570FF" stroke-width="1.5"/><circle cx="276" cy="36" r="3.5" fill="#1570FF" stroke="#1570FF" stroke-width="1.5"/><text x="14" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">4시간 전</text><text x="145" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">2시간 전</text><text x="276" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">매치 시작</text><text x="79" y="20" fill="#1570FF" font-size="10.5" font-weight="800" text-anchor="middle">수신 시간</text></svg></div>
+        <div style="font-size:12.5px;color:#6B7684;line-height:1.6;margin-bottom:12px">구장 주소 기준 시간당 1mm 이상 강수 예보가 확인되면 발송돼요.</div>
         <div style="padding:10px 12px;border-radius:10px;background:#FFF3F2;border:1px solid #FFD5D5;display:flex;align-items:center;gap:8px;">
           <div style="width:18px;height:18px;border-radius:999px;background:#F04438;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="9" height="9" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
           <div style="font-size:13px;font-weight:700;color:#F04438;">개별 귀가 시 환불 불가</div>
@@ -331,17 +328,16 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
       </div>
       <div style="padding:16px;border-radius:16px;background:#F7F8FA;border:1px solid #ECEEF2;margin-bottom:10px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-          <span style="padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#FFF3F2;color:#F04438;">변동 알림톡</span>
+          <span style="padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#FFF3F2;color:#F04438;">강수 예보 변동 안내</span>
           <span style="font-size:11.5px;color:#6B7684;font-weight:600;">매치 시작 2시간 이내</span>
         </div>
-        <div style="background:#fff;border-radius:10px;padding:12px 12px 8px;margin-bottom:12px;"><svg width="100%" viewBox="0 0 290 56" style="display:block"><line x1="14" y1="36" x2="276" y2="36" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/><rect x="145" y="28" width="131" height="16" rx="8" fill="#FFECEC"/><line x1="153" y1="36" x2="268" y2="36" stroke="#F04438" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="36" r="3.5" fill="#fff" stroke="#F04438" stroke-width="1.5"/><circle cx="145" cy="36" r="3.5" fill="#fff" stroke="#F04438" stroke-width="1.5"/><circle cx="276" cy="36" r="3.5" fill="#F04438" stroke="#F04438" stroke-width="1.5"/><text x="14" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">4시간 전</text><text x="145" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">2시간 전</text><text x="276" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">매치 시작</text><text x="211" y="20" fill="#F04438" font-size="10.5" font-weight="800" text-anchor="middle">발송 구간</text></svg></div>
-        <div style="font-size:12.5px;color:#6B7684;line-height:1.6;margin-bottom:12px">구장에 시간당 1mm 이상 강수 예보가 확인되면 발송돼요.</div>
+        <div style="background:#fff;border-radius:10px;padding:12px 12px 8px;margin-bottom:12px;"><svg width="100%" viewBox="0 0 290 56" style="display:block"><line x1="14" y1="36" x2="276" y2="36" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/><rect x="145" y="28" width="131" height="16" rx="8" fill="#FFECEC"/><line x1="153" y1="36" x2="268" y2="36" stroke="#F04438" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="36" r="3.5" fill="#fff" stroke="#F04438" stroke-width="1.5"/><circle cx="145" cy="36" r="3.5" fill="#fff" stroke="#F04438" stroke-width="1.5"/><circle cx="276" cy="36" r="3.5" fill="#F04438" stroke="#F04438" stroke-width="1.5"/><text x="14" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">4시간 전</text><text x="145" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">2시간 전</text><text x="276" y="52" fill="#8B95A1" font-size="10" font-weight="600" text-anchor="middle">매치 시작</text><text x="211" y="20" fill="#F04438" font-size="10.5" font-weight="800" text-anchor="middle">수신 시간</text></svg></div>
+        <div style="font-size:12.5px;color:#6B7684;line-height:1.6;margin-bottom:12px">구장 주소 기준 시간당 1mm 이상 강수 예보가 확인되면 발송돼요.</div>
         <div style="padding:10px 12px;border-radius:10px;background:#EDFBF4;border:1px solid #C3F0D5;display:flex;align-items:center;gap:8px;">
           <div style="width:18px;height:18px;border-radius:999px;background:#0BA260;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
           <div style="font-size:13px;font-weight:700;color:#0BA260;">개별 귀가 시 미참여 시간만큼 환불</div>
         </div>
       </div>
-      <div class="note-text">※ 알림톡이 발송되지 않은 매치는 강수로 개별 귀가 시 참여하지 않은 시간만큼 환불돼요.</div>
       <div class="spacer"></div>
     </div>
 
@@ -456,7 +452,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
     <!-- ─── STEP 3 SELECT ────────────────── -->
     <div class="screen" id="s-step3-select">
       <div class="g20"></div>
-      <div class="kicker">마무리</div>
+      <div class="kicker">매치 정리</div>
       <div class="step-title">진행 여부를<br>선택해 주세요</div>
       <div class="step-desc">진행 결과에 맞는 항목을 선택하면 이후 안내가 이어져요.</div>
       <div class="g24"></div>
@@ -488,7 +484,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
     <!-- ─── STEP 3 ─────────────────────── -->
     <div class="screen" id="s-step3">
       <div class="g20"></div>
-      <div class="kicker">마무리</div>
+      <div class="kicker">매치 정리</div>
       <div class="step-title" id="s3-title">현장을 정리하고<br>정산해요</div>
       <div class="step-desc" id="s3-desc">아래 항목을 순서대로 확인해 주세요.</div>
       <div class="g20"></div>
@@ -555,7 +551,7 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
               </div>
               <div class="risk-item normal">
                 <div class="risk-badge normal">2</div>
-                <div><div class="risk-item-title">도착하지 않은 플래버에게 안내</div><div class="risk-item-desc">아직 현장에 오지 않은 플래버에게 취소·중단 사실을 알려주세요.</div></div>
+                <div><div class="risk-item-title">도착하지 않은 플래버에게 안내</div><div class="risk-item-desc">아직 현장에 오지 않은 플래버에게 취소·중단 사실을 알려 주세요.</div></div>
               </div>
             </div>
           </div>
@@ -640,11 +636,11 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
           <div class="risk-items">
             <div class="risk-item normal">
               <div class="risk-badge normal">1</div>
-              <div><div class="risk-item-title">체크 누락 시 정산되지 않아요</div><div class="risk-item-desc">조건에 해당하면 꼭 체크해 주세요. 누락된 건은 정산에 반영되지 않아요.</div></div>
+              <div><div class="risk-item-title">강수 매치 체크하지 않으면 정산되지 않아요</div><div class="risk-item-desc">조건에 해당하면 꼭 체크해 주세요. 체크하지 않으면 정산에 반영되지 않아요.</div></div>
             </div>
             <div class="risk-item normal">
               <div class="risk-badge normal">2</div>
-              <div><div class="risk-item-title">거짓 체크 시 권한이 해지돼요</div><div class="risk-item-desc">사실과 다르게 체크하면 매치비 미정산과 함께 매니저 권한이 해지될 수 있어요.</div></div>
+              <div><div class="risk-item-title">사실과 다르게 체크하면 경고를 받을 수 있어요</div><div class="risk-item-desc">사실과 다르게 체크하면 매치비 미정산과 함께 매니저 권한이 해지될 수 있어요.</div></div>
             </div>
           </div>
         </div>
@@ -701,8 +697,8 @@ body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic
 </div>
 
 <script>
-const CTA={'s-step1':{label:'다음 — 진행 중',next:'s-step2',style:'tertiary'},'s-step3':{label:'가이드 마치기',next:'s-intro',style:'primary',noArrow:true}};
-const HDR={'s-step1':{type:'step',n:1,label:'출석 확인'},'s-step2':{type:'step',n:2,label:'진행 결정'},'s-step3':{type:'step',n:3,label:'마무리'},'s-step3-select':{type:'step',n:3,label:'마무리'},'s-refund':{type:'sub',title:'환불 규정'},'s-intro':{type:'intro'}};
+const CTA={'s-step1':{label:'다음 — 진행 결정',next:'s-step2',style:'tertiary'},'s-step3':{label:'가이드 마치기',next:'s-intro',style:'primary',noArrow:true}};
+const HDR={'s-step1':{type:'step',n:1,label:'출석 확인'},'s-step2':{type:'step',n:2,label:'진행 결정'},'s-step3':{type:'step',n:3,label:'매치 정리'},'s-step3-select':{type:'step',n:3,label:'매치 정리'},'s-refund':{type:'sub',title:'환불 규정'},'s-intro':{type:'intro'}};
 let history=['s-intro'];
 function goTo(id){const cur=history[history.length-1];document.getElementById(cur).classList.remove('active');history.push(id);document.getElementById(id).classList.add('active');document.getElementById('scr').scrollTop=0;updateHeader(id);updateFooter(id);}
 function goBack(){if(history.length<=1)return;const cur=history[history.length-1];document.getElementById(cur).classList.remove('active');history.pop();const prev=history[history.length-1];document.getElementById(prev).classList.add('active');document.getElementById('scr').scrollTop=0;updateHeader(prev);updateFooter(prev);}
@@ -735,7 +731,7 @@ function setupStep3(){
     c3num.className='collapse-num icon';c3num.textContent='🌧️';
     c4num.className='collapse-num icon';c4num.textContent='💰';
     title.innerHTML='강수 매치를<br>마무리해요';
-    desc.textContent='매치 시작 전 플래버들에게 안전 안내를 해주세요.';
+    desc.textContent='매치 시작 전 플래버들에게 안전 안내를 해 주세요.';
   }else{
     cancelSec.style.display='';
     proceedSec.style.display='none';
